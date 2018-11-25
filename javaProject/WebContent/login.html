@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function validateForm(){
+	var id = document.getElementById("id").value;
+	var password = document.getElementById("password").value;
+	var role = document.querySelector('input[name="role"]:checked').value;
+	if(id.length == 0){
+		document.getElementById("error").style.color = "red";
+		document.getElementById("error").innerHTML = "ID is required";
+		return;
+	}
+	if(password.length == 0){
+		document.getElementById("error").style.color = "red";
+		document.getElementById("error").innerHTML = "Password is required";
+		return;
+	}
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+		var response = JSON.parse(this.responseText);
+		if(response.status){
+			if(role == "student"){
+				window.location.replace("StudentHome");
+			}
+			else if(role == "instructor"){
+				window.location.replace("InstructorHome");
+			}
+			else if(role == "TA"){
+				window.location.replace("TAHome");
+			}
+			
+		}
+		else{
+			document.getElementById("error").innerHTML = response.message;
+			console.log(response.message);
+		}
+	    
+	  }
+	};
+	
+	xhttp.open("POST", "LoginServlet", true);
+	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xhttp.send("id=" + id + "&password=" + password  +  "&role=" + role);
+}
+</script>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+	<h1>Login</h1>
+	<form>
+		<p id="error" style="color:red"></p>
+		ID<br> <input type="text" name="id" id="id" maxlength="50" required> <br><br>
+		Password<br> <input type="password" name="password" id="password" maxlength="50" required> <br><br>
+		<input type="radio" name="role" value="student" checked> Student <br>
+		<input type="radio" name="role" value="instructor"> Instructor <br>
+		<input type="radio" name="role" value="TA"> Teaching assistant <br> <br>
+		<button type="button" onclick="validateForm()">Login</button>
+	</form>
+	<br><br>
+	<a href = "signup.html"> Sign up</a>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var isObjective = 1;
+var options = new Array();
+var isCorrect = new Array();
+function resetError() {
+	document.getElementById("error").innerHTML = "";
+}
+function setError(temp) {
+	document.getElementById("error").style.color = "red";
+	document.getElementById("error").innerHTML = temp;
+}
+function validateForm(){
+	var max_limit_ques = 2000;
+	var max_limit_ops = 1000;
+	var ques = document.getElementById("question").value;
+	/* var role = document.querySelector('input[name="role"]:checked').value; */
+	if(ques.length == 0){
+		setError("Question is required");
+		return;
+	}
+	resetError();
+	if (isObjective == 0) {
+		var ans = document.getElementById("answer").value;
+		var xhttp;
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		  if (this.readyState == 4 && this.status == 200) {
+			var response = JSON.parse(this.responseText);
+			if(response.status){
+				document.getElementById("error").innerHTML = "Question created successfully<br>Proceed to the <a href=\"InstructorHome\"> Home</a> Page";
+				document.getElementById("error").style.color = "green";
+			}
+			else{
+				setError(response.message);
+			}
+		    
+		  }
+		};
+		var toSend = "&question="+ques + "&answer=" + ans;
+		xhttp.open("POST", "CreateSubQuestion", true);
+		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		//console.log(toSend);
+		xhttp.send(toSend);
+	}
+	else {
+		/* var ans = getElementById("answer").value; */
+		var xhttp;
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		  if (this.readyState == 4 && this.status == 200) {
+			var response = JSON.parse(this.responseText);
+			if(response.status){
+				document.getElementById("error").innerHTML = "Question created successfully<br>Proceed to the <a href=\"InstructorHome\"> Home</a> Page";
+				document.getElementById("error").style.color = "green";
+			}
+			else{
+				setError(response.message);
+			}
+		  }
+		};
+		
+		xhttp.open("POST", "CreateObjQuestion", true);
+		xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		var toSend = "&question=" + ques + "&length=" + options.length;
+		for (var i = 0; i < options.length; i++){
+			toSend += "&answer";
+			toSend += i;
+			toSend += "=";
+			toSend += options[i];
+			toSend += "&isCorrect";
+			toSend += i;
+			toSend += "=";
+			toSend += isCorrect[i]; //0 or 1
+		}
+		//console.log(toSend);
+		xhttp.send(toSend);
+	}
+}
+
+function addOption(){
+	var newop = document.getElementById("newop").value;
+	/* console.log(newop); */
+	if (newop == "")
+	{
+		setError("Empty option cannot be added");	
+	}
+	else {
+		document.getElementById("options").innerHTML += '<br> <input type="checkbox" name="ops" value="' + options.length +'" onclick="switching(' + options.length + ')"> ' + newop;
+		document.getElementById("newop").value = "";
+		options.push(newop);
+		isCorrect.push(0);
+		resetError();
+	}
+}
+
+function switching(ind) {
+	//console.log("out" + ind);
+	isCorrect[ind] = 1 - isCorrect[ind];
+}
+
+function makeS() {
+	isObjective = 0;
+	document.getElementById("adding").innerHTML = "Answer: <input type='text' name='answer' id='answer' maxlength='1000'>";
+	document.getElementById("options").innerHTML = "";
+	/* console.log("madeS"); */
+}
+function makeO() {
+	options.length = 0;
+	isCorrect.length = 0;	
+	isObjective = 1;
+	document.getElementById("adding").innerHTML = 'Add a new option <br> <input type="text" name="newop" id="newop" maxlength="1000"> <br><br><button type="button" onclick="addOption()"> Add Option</button>';
+	document.getElementById("options").innerHTML = "Current Options:";
+	/* console.log("madeO");	 */
+}
+
+function goBack(){ 
+	window.location.replace("InstructorHome");
+}
+</script>
+<meta charset="UTF-8">
+<title>Signup</title>
+</head>
+<body>
+<button type="button" onclick="goBack()">Back to Home</button><br>
+	<h1>Create a New Question</h1>
+	
+	<p id="error" style="color:red"></p>
+	<form>
+		
+		Question<br> <input type="text" name="question" id="question" maxlength="2000" required> <br><br>
+		<!-- Name<br> <input type="text" name="name" id="name" maxlength="50" required> <br><br>
+		Email<br> <input type="text" name="email" id="email" maxlength="50" required> <br><br>
+		Password<br> <input type="password" name="password" id="password" maxlength="50" required> <br><br> -->
+		<input type="radio" name="role" value="objective" onclick="makeO()" checked> Objective <br>
+		<input type="radio" name="role" value="subjective" onclick="makeS()"> Subjective <br>
+		<p id="adding"> Add a new option <br> <input type="text" name="newop" id="newop" maxlength="1000"> <br><br><button type="button" onclick="addOption()"> Add Options</button></p>
+		<!-- <input type="radio" name="role" value="TA"> Teaching assistant <br> <br> -->
+		<p id="options">Current Options:</p>
+		<button type="button" onclick="validateForm()">Create Question</button>
+	</form>
+</body>
+</html>

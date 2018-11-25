@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function validateForm(){
+	var max_limit = 50;
+	var id = document.getElementById("id").value;
+	var name = document.getElementById("name").value;
+	var password = document.getElementById("password").value;
+	var email = document.getElementById("email").value;
+	var role = document.querySelector('input[name="role"]:checked').value;
+	if(id.length == 0){
+		document.getElementById("error").style.color = "red";
+		document.getElementById("error").innerHTML = "ID is required";
+		return;
+	}
+	if(password.length == 0){
+		document.getElementById("error").style.color = "red";
+		document.getElementById("error").innerHTML = "Password is required";
+		return;
+	}
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+		var response = JSON.parse(this.responseText);
+		if(response.status){
+			document.getElementById("error").innerHTML = "Account created successfully<br>Proceed to the <a href=\"login.html\"> Login</a> page";
+			document.getElementById("error").style.color = "green";
+		}
+		else{
+			document.getElementById("error").innerHTML = "ID already taken. Please enter another ID";
+			document.getElementById("error").style.color = "red";
+			console.log(response.message);
+		}
+	    
+	  }
+	};
+	
+	xhttp.open("POST", "SignupServlet", true);
+	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xhttp.send("id=" + id + "&name="+name + "&password=" + password  + "&email=" + email + "&role=" + role);
+}
+</script>
+<meta charset="UTF-8">
+<title>Signup</title>
+</head>
+<body>
+	<h1>Sign up</h1>
+	<p id="error" style="color:red"></p>
+	<form>
+		ID<br> <input type="text" name="id" id="id" maxlength="50" required> <br><br>
+		Name<br> <input type="text" name="name" id="name" maxlength="50" required> <br><br>
+		Email<br> <input type="text" name="email" id="email" maxlength="50" required> <br><br>
+		Password<br> <input type="password" name="password" id="password" maxlength="50" required> <br><br>
+		<input type="radio" name="role" value="student" checked> Student <br>
+		<input type="radio" name="role" value="instructor"> Instructor <br>
+		<input type="radio" name="role" value="TA"> Teaching assistant <br> <br>
+		<button type="button" onclick="validateForm()">Create account</button> 
+	</form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+-- When inserting in "checked" ensure that the section of the quiz and ta match
+
+-- There is no pop-up box on failure of creation of a section right now
+
+-- On opening InstructorHome without logging in, there is a server error (check for all other files as well)
+
+-- modify createQuestion to take topic as well
+
+-- in deleteQuestion, delete the topics associated with it as well
+
+-- display topic in instructor topic
+
+-- After we create a new user it shows incorrect password when trying to login from a new account
+
+-- Remove quizid input field from add_quiz_question.js
+
+-- Create button of isobjective and issubjective in add_quiz_question
+
+-- Add quiz to section
+
+-- Adding various types of questions (such as numeric answer etc.), not radio options in login.html, remove random alerts (for ex. on successful save of student's answer).
+
+-- when instructor adds TA, check if instructor is actually of that section
+
+
+-- add weightage to insert quiz
+
+INSTRUCTOR:
+
+xx check session and role in every servlet
+xx create new course
+xx with every new section created, we need to find the threadid and then add to teaches
+-- add drop down for semesters
+-- in drop down for course, display the name as well
+xx course page on clicking on course
+xx add question
+-- check login in AllSection
+-- in InsertQuizQuestion check that the quiz and the question belong to the instructor who is adding to it
+-- if a new question is tried to add, a error message is returned but the question is added to the database
+
+
+
+
+
+

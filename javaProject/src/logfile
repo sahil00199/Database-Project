@@ -1,0 +1,4 @@
+2018-10-31 20:44:09.151 IST [22952] LOG:  listening on IPv4 address "127.0.0.1", port 5050
+2018-10-31 20:44:09.217 IST [22952] LOG:  listening on Unix socket "/home/sahil/postgresql/.s.PGSQL.5050"
+2018-10-31 20:44:09.354 IST [22953] LOG:  database system was shut down at 2018-10-30 23:03:05 IST
+2018-10-31 20:44:09.451 IST [22952] LOG:  database system is ready to accept connections

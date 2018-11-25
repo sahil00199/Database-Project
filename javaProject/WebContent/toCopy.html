@@ -1,0 +1,27 @@
+<html><head><title>Instructor Home</title>
+    <script src="jquery-3.3.1.js"> </script>
+    <script src="jquery.dataTables.min.js"></script>    
+    <script src="jquery-ui.min.js"></script>    
+    <link rel="stylesheet" href="jquery-ui.css" />    
+    <link rel="stylesheet" href="jquery.dataTables.min.css"/>	 
+    <script src="create_question.js"></script>
+</head>
+<body>
+<button type="button" onclick="goBack()">Back to Home</button><br>
+	<h1>Create a New Question</h1>
+	
+	<p id="error" style="color:red"></p>
+	<form>
+		
+		Question<br> <input type="text" name="question" id="question" maxlength="2000" required> <br>
+		<p id="currtopics">Current Topics:</p>
+		<p id="addingTopics"> Add a new Topic <br> <input type="text" name="newtop" id="newtop" onchange=addTopic() maxlength="1000"> 
+<br><br>		<!-- <input type="radio" name="role" value="TA"> Teaching assistant <br> <br> -->
+		<input type="radio" name="role" value="objective" onclick="makeO()" checked> Objective <br>
+		<input type="radio" name="role" value="subjective" onclick="makeS()"> Subjective <br>
+		<p id="adding"> Add a new option <br> <input type="text" name="newop" id="newop" maxlength="1000"> <br><br><button type="button" onclick="addOption()"> Add Options</button></p>
+		<!-- <input type="radio" name="role" value="TA"> Teaching assistant <br> <br> -->
+		<p id="options">Current Options:</p>
+		<button type="button" onclick="validateForm()">Create Question</button>
+	</form>
+</body></html>
