@@ -47,6 +47,10 @@ insert into teaches values('i2', 2);
 insert into teaches values('i2', 3);
 
 insert into takes values('s1', 1);
+insert into takes values('s5', 1);
+insert into takes values('s2', 1);
+insert into takes values('s3', 1);
+insert into takes values('s4', 1);
 insert into takes values('s1', 3);
 insert into takes values('s3', 2);
 insert into takes values('s3', 3);
