@@ -72,6 +72,7 @@ function questionList(result, list)
 			list.append(answer);
 			var removeQuestion = "<form> <button type=\"button\" onclick=\"removeQuestion("+v.qid+")\" > Remove Question</button> </form><br>";
 			list.append(removeQuestion);
+			list.append("<div class='separator2'></div><br>");
     		$.ajax({
 		        type: "GET",
 		        url: "InstructorQuesOptions",

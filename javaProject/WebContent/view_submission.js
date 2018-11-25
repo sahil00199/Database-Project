@@ -49,9 +49,8 @@ function optionList(result, qlist, ans, isObjective, qNum)
     		}
     		
     		$.each(result, function(k, v) {
-    			str+="<br>" +"<input type=\"checkbox\" name=\"ops\" id ="+ qNum + "o"+ k +" onclick=\"selectOption("+qNum+","+k+")\">"+ v.opt ;
+    			str+="<input type=\"checkbox\" name=\"ops\" id ="+ qNum + "o"+ k +" onclick=\"selectOption("+qNum+","+k+")\">"+ v.opt + "<br>" ;
             });
-    		str+="<br>";
 //    		str+="<form> <button type=\"button\" onclick=\"putResponse("+qNum+", "+ isObjective+ ")\" > Save answer</button> </form><br>";
     		qlist.html(str);
     		

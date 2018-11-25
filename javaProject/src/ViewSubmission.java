@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,26 +45,8 @@ public class ViewSubmission extends HttpServlet {
 		if(qzid == null || sid == null) {
 			response.sendRedirect("illegalAccess.html");
 		}
-		String html = "<html><head><title>Student Submission</title>" + 
-				"    <script src=\"jquery-3.3.1.js\"> </script>" + 
-				"    <script src=\"jquery.dataTables.min.js\"></script>" + 
-				"    <script src=\"jquery-ui.min.js\"></script>" + 
-
-				"    <link rel=\"stylesheet\" href=\"jquery-ui.css\" />" + 
-				"    <link rel=\"stylesheet\" href=\"jquery.dataTables.min.css\"/>" + 
-
-				"    <script> var qzid = " + qzid + "; </script>" +
-				"    <script> var sid = \"" + sid + "\"; </script>" +
-				"	 <script src=\"view_submission.js\"></script>" +
-				"</head>" + 
-				"<body>"
-				+ "<h1 id = \"heading\"></h1>" + 
-				"    <div id=\"content\">" +
-				"	 </div> "
-				+ "</body>"
-				+ "</html>" ;
-		response.setContentType("text/html");
-		response.getWriter().print(html);
+		RequestDispatcher view = request.getRequestDispatcher("view_submission.jsp");
+        view.forward(request, response); 
 	
 	}
 
