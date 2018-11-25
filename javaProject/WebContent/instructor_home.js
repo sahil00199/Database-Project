@@ -13,7 +13,9 @@ function buildList(result, list)
         });
     }
 }
-
+function goBack(){ 
+	window.location.replace("Home.jsp");
+}
 $(document).ready(function() {
     document.getElementById("content").innerHTML =
         " <a id=\"linker\" href=\"google.com\">Create Section</a><br><div id=\"newConvo\"></div>" +

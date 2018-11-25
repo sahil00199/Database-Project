@@ -1,17 +1,38 @@
 <html>
-
 <head>
  	<link rel="stylesheet" href="jquery-ui.css" />    
     <link rel="stylesheet" href="jquery.dataTables.min.css"/>	 
 	<script src="jquery-3.3.1.js"> </script><!-- Latest compiled and minified CSS -->
-    <script src="student_home.js"></script>
-	
     <script src="jquery.dataTables.min.js"></script>    
     <script src="jquery-ui.min.js"></script>   
-    
+    <script>
+    	function goAhead(t) {
+    		console.log("this" + t);
+    		var xhttp;
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+                 if (this.readyState == 4 && this.status == 200){
+                     /* json= JSON.parse(this.responseText); */
+//                     console.log(document.getElementById("tttopic").value);
+//                     console.log(json.data);
+                     if (t == "student") {
+             			window.location.replace("StudentHome");
+             		}
+             		else if (t == "instructor"){
+             			window.location.replace("InstructorHome");
+             		}
+             		else window.location.replace("TAHome");
+//                     console.log(document.getElementById("tttopic").value);
+                 }
+            }
+            xhttp.open("GET", "Home?role="+t, true);
+            xhttp.send();
+    		
+    	}
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Student Home</title>
+    <title>Homepage</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -45,18 +66,18 @@
                             <nav class="navbar navbar-default" id="navmenu">
                                 <div class="container-fluid">
                                     <!-- Brand and toggle get grouped for better mobile display -->
-                                    <div class="navbar-header">
-                                        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" onClick=goBack()>
+                                    <!-- <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" onClick=goBack()>
                                             <span class="sr-only">Toggle navigation</span>
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
-                                        </button> -->
-                                        <button type="button" onClick=goBack() class="btn">
-                                            Change Role
+                                        </button>
+                                        <button type="button" onClick="window.location.replace('Home')" class="btn">
+                                            Home
                                         </button>
                                         
-                                    </div>
+                                    </div> -->
 
                                     <!-- Collect the nav links, forms, and other content for toggling -->
 
@@ -92,13 +113,22 @@
                     <div class="col-sm-12">
                         <div class="main_contact sections">
                             <div class="head_title text-center">
-                                <h1>Student Home</h1>
+                                <h1 id="heading">Choose your role:</h1>
                             </div>
 
-                            <br><br><div id="content">	 </div> 
-	
-
+                            <br><br>
+                            <div id="content" align="center">
+                            <button type="button" onClick="goAhead('student')" class="btn">Student</button>
+                            </div> 
                             
+                            <div id="content" align="center">
+                            <button type="button" onClick="goAhead('instructor')" class="btn">Instructor</button>
+                            </div> 
+                            
+                            <div id="content" align="center">
+                            <button type="button" onClick="goAhead('TA')" class="btn">TA</button>
+                            </div> 
+
                     </div>
                 </div><!-- End of row -->
             </div><!-- End of container -->
@@ -154,7 +184,6 @@
             lat: -12.043333,
             lng: -77.028333
         });
-
     </script>
      --><script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
