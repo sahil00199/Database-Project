@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 
 /**
  * Servlet implementation class AutoCorrectObjective
@@ -73,7 +76,8 @@ public class AutoCorrectObjective extends HttpServlet {
 					{DbHelper.ParamType.INT, DbHelper.ParamType.INT}, new String[] {Integer.toString((int) output2.get(i).get(0)),
 							qzid});
 			answers.put((int) output2.get(i).get(0), answer);
-			maxmarks.put((int) output2.get(i).get(0), Integer.toString((int) output3a.get(0).get(0) ));
+//			System.out.println(Float.toString((float) output3a.get(0).get(0)));
+			maxmarks.put((int) output2.get(i).get(0), Float.toString((float) output3a.get(0).get(0)) );
 		}
 		
 		String query4 = "select sid from takes where secid = ?";
@@ -95,13 +99,13 @@ public class AutoCorrectObjective extends HttpServlet {
 				{
 					studentAnswer = (String) output5.get(0).get(0);
 				}
-				boolean updateSuccessful = false;
+				boolean updateSuccessful = true;
 				if (answers.get(questionNo).equals(studentAnswer))
 				{
 					String query6 = "update response set marksobtained=? where sid = ? and qid = ? and qzid = ?;";
 					updateSuccessful = DbHelper.executeUpdateBool(query6, new
 							DbHelper.ParamType[] {
-									DbHelper.ParamType.INT,
+									DbHelper.ParamType.FLOAT,
 									DbHelper.ParamType.STRING,
 									DbHelper.ParamType.INT,
 									DbHelper.ParamType.INT
@@ -111,13 +115,14 @@ public class AutoCorrectObjective extends HttpServlet {
 									question,
 									qzid
 							});
+					
 				}
-				else
+				else if (output5.size() == 1)
 				{
 					String query6 = "update response set marksobtained=? where sid = ? and qid = ? and qzid = ?;";
 					updateSuccessful = DbHelper.executeUpdateBool(query6, new
 							DbHelper.ParamType[] {
-									DbHelper.ParamType.INT,
+									DbHelper.ParamType.FLOAT,
 									DbHelper.ParamType.STRING,
 									DbHelper.ParamType.INT,
 									DbHelper.ParamType.INT
@@ -128,8 +133,20 @@ public class AutoCorrectObjective extends HttpServlet {
 									qzid
 							});
 				}
+				if (!updateSuccessful)
+				{
+					ObjectMapper mapper = new ObjectMapper();
+			    	ObjectNode node = mapper.createObjectNode();
+			    	node.put(DbHelper.STATUS_LABEL, false);
+		           	response.getWriter().print(node.toString());
+		        	return;
+				}
 			}
 		}
+		ObjectMapper mapper = new ObjectMapper();
+    	ObjectNode node = mapper.createObjectNode();
+    	node.put(DbHelper.STATUS_LABEL, true);
+       	response.getWriter().print(node.toString());
 		
 		return;
 	}
