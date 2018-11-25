@@ -72,6 +72,7 @@ function questionList(result, list, qzid)
 			list.append(answer);
 			var removeQuestion = "<form> <button type=\"button\" onclick=\"removeQuestion("+v.qid+")\" > Remove Question</button> </form><br>";
 			list.append(removeQuestion);
+			list.append("<div class='separator2'></div><br>");
     		$.ajax({
 		        type: "GET",
 		        url: "InstructorQuizQuesOptions",
@@ -96,14 +97,92 @@ function questionList(result, list, qzid)
     }
 }
 
+function scheduler(result, list, qzid)
+{
+    // Remove current options
+    list.html('Schedule : <br>');
+    if(result != ''){
+    	$.each(result, function(k, v) {
+//    		console.log(v);
+			var s = "Start time:" + v.start + "<br>" + "Duration : "+ v.duration ;
+			list.append(s);
+			var updateSchedule = "<form> " +
+			 " Enter the start time: <input type=\"text\" id = \"sttime\" name=\"sttime\" placeholder=\"YYYY-MM-DD HH:MM:SS\">"+
+			    " Enter the duration: <input type=\"text\" id = \"dur\" name=\"dur\" placeholder=\"days HH:MM:SS\">"+
+					"<button type=\"button\" onclick=\"updateschedule("+qzid+")\" > Update Schedule</button> </form><br>"+ "<p id=\"max\"> </p>";
+			console.log(updateSchedule);
+			list.append(updateSchedule);
+			$.ajax({
+		        type: "GET",
+		        url: "QuizMaximumMarks",
+		        data: {"qzid": qzid},
+		        success: function(data){
+		        	var data1 = (jQuery.parseJSON(data));
+		        	if(data1.status){
+			            MaxMarks(
+			                data1.data,
+			                $('#max')
+			            );
+		        	}
+		        	else{
+		        		alert(data1.message);
+		        		window.location.replace("illegalAccess.html");
+		        	}
+		        }
+		    }); 
+			
+        });
+    }
+}
+
+function MaxMarks(result, list)
+{
+    // Remove current options
+    list.html('');
+    if(result != ''){
+    	var str = 'Maximum marks:';
+		$.each(result, function(k, v) {
+			str+= v.s + "<br>";
+        });
+		list.html(str);
+    }
+}
 $(document).ready(function() {
 //	document.title = "Course:"
+	currTime()
     document.getElementById("heading").innerHTML =  "Quiz";
     document.getElementById("content").innerHTML =
         "<p><a id=\"newQuestionQuiz\" href=\"AddQuizQuestion?qzid=" + qzid + "\"> Add Question</a></p>\n"+
+        "<button type=\"button\" onclick=\"location.href='AllSubmissions?qzid="+ qzid +"';\" >View all submissions</button>" +
+        "<p id = \"schedule\"></p><br>"+
         "<div id = \"questions\"></div><br>";
+    schedule();
     questions();
 });
+
+function schedule(){
+	$('#schedule').html('Schedule');
+	$.ajax({
+        type: "GET",
+        url: "InstructorQuizTimings",
+        data: {"qzid": qzid},
+        success: function(data){
+//        	console.log(data);
+        	var data1 = (jQuery.parseJSON(data));
+        	if(data1.status){
+	            scheduler(
+	                data1.data,
+	                $('#schedule'),
+	                qzid
+	            );
+        	}
+        	else{
+        		window.location.replace("illegalAccess.html");
+        		console.log(data1.message);
+        	}
+        }
+    });   
+}
 
 function questions(){
 	$('#questions').html('');
@@ -172,4 +251,45 @@ function removeQuestion(qid)
 	    }
 	}); 
 }
+
+function currTime()
+{
+	d = new Date()
+	var  h = (d.getHours()<10?'0':'') + d.getHours();
+	  var  m = (d.getMinutes()<10?'0':'') + d.getMinutes();
+	  var s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+	  time = h + ':' + m+':'+s;
+	y = new Date().toLocaleDateString();
+	date = y[6]+y[7]+y[8]+y[9]+'-'+y[0]+y[1]+'-'+y[3]+y[4]
+	s = date + ' '+time
+	console.log(s)
+	return s
+}
+
+function updateschedule(qzid)
+{
+	var starttime = document.getElementById('sttime').value;
+	var duration = document.getElementById('dur').value;
+	console.log(starttime);
+	console.log(duration);
+	$.ajax({
+        type: "GET",
+        url: "InstructorUpdateQuizTimings",
+        data: {"qzid": qzid, "start" :starttime, "duration" : duration},
+        success: function(data){
+//        	console.log(data);
+        	var data1 = (jQuery.parseJSON(data));
+        	if(data1.status){
+	            alert("Successful");
+        	}
+        	else{
+        		alert(data1.message);
+        		//window.location.replace("illegalAccess.html");
+        	}
+        }
+    }); 
+	document.location.reload() 
+	}
+
+
 

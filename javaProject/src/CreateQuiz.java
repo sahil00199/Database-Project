@@ -66,14 +66,15 @@ public class CreateQuiz extends HttpServlet {
 		}
 //		System.out.println("reached here");
 		String query =  //TODO: verify query
-				"insert into quiz(qzname, secid, start,  duration) values (?, ?, CAST(? AS TIMESTAMP),  CAST(? AS INTERVAL))";
+				"insert into quiz(qzname, secid, start,  duration) values (?, ?, CAST(? AS TIMESTAMP),  CAST(? AS INTERVAL), ?)";
 		String res = DbHelper.executeUpdateJson(query, 
 				new DbHelper.ParamType[] {
 						DbHelper.ParamType.STRING,
 						DbHelper.ParamType.INT,
 						DbHelper.ParamType.STRING,
-						DbHelper.ParamType.STRING}, 
-				new Object[] {qzname, secid, starttime, duration});
+						DbHelper.ParamType.STRING,
+						DbHelper.ParamType.FLOAT}, 
+				new Object[] {qzname, secid, starttime, duration, weightage});
 		
 		PrintWriter out = response.getWriter();
 		out.print(res);

@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,24 +40,8 @@ public class InstructorDB extends HttpServlet {
 		if(!role.equals("instructor")) {
 			response.sendRedirect("illegalAccess.html");
 		}
-		String html = "<html><head><title>Question Database</title>" + 
-				"    <script src=\"jquery-3.3.1.js\"> </script>" + 
-				"    <script src=\"jquery.dataTables.min.js\"></script>" + 
-				"    <script src=\"jquery-ui.min.js\"></script>" + 
-
-				"    <link rel=\"stylesheet\" href=\"jquery-ui.css\" />" + 
-				"    <link rel=\"stylesheet\" href=\"jquery.dataTables.min.css\"/>" + 
-				"	 <script src=\"instructor_db.js\"></script>" +
-				"</head>" + 
-				"<body>"+
-				" <button type=\"button\" onclick=window.location.replace(\"InstructorHome\")>Back to Home</button><br>"
-				+ "<h1 id = \"heading\"></h1>" + 
-				"    <div id=\"content\">" +
-				"	 </div> "
-				+ "</body>"
-				+ "</html>" ;
-		response.setContentType("text/html");
-		response.getWriter().print(html);
+		RequestDispatcher view = request.getRequestDispatcher("instructor_db.jsp");
+        view.forward(request, response);  
 	
 	}
 
