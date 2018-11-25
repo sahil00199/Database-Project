@@ -17,7 +17,7 @@ function buildList2(result, list)
     if(result != ''){
     	$.each(result, function(k, v) {
     		console.log(v);
-            list.append("<h3> <a href = \"StudentQuiz?qzid=" + v.qzid + "\"> " + v.qzname + " </a></h3>");
+            list.append("<h3> <a href = \"StudentQuizPastHelper?qzid=" + v.qzid + "\"> " + v.qzname + " </a></h3>");
         });
     }
 }

@@ -109,6 +109,7 @@ function questionList(result, list, qzid)
 $(document).ready(function() {
 //	document.title = "Course:"
     document.getElementById("content").innerHTML =
+    	"<div id = \"max\"></div><br>"+
             "<div id = \"questions\"></div><br>";
     document.getElementById("heading").innerHTML =  "Quiz";
     console.log("sdfsaf");
@@ -132,8 +133,41 @@ $(document).ready(function() {
         		//window.location.replace("illegalAccess.html");
         	}
         }
-    });   
+    }); 
+    
+    
+    $.ajax({
+        type: "GET",
+        url: "QuizMaximumMarks",
+        data: {"qzid": qzid},
+        success: function(data){
+        	var data1 = (jQuery.parseJSON(data));
+        	if(data1.status){
+	            MaxMarks(
+	                data1.data,
+	                $('#max')
+	            );
+        	}
+        	else{
+        		alert(data1.message);
+        		window.location.replace("illegalAccess.html");
+        	}
+        }
+    }); 
 });
+
+function MaxMarks(result, list)
+{
+    // Remove current options
+    list.html('');
+    if(result != ''){
+    	var str = 'Maximum marks:';
+		$.each(result, function(k, v) {
+			str+= v.s + "<br>";
+        });
+		list.html(str);
+    }
+}
 
 function selectOption(qNum,optNum)
 {

@@ -77,8 +77,8 @@ public class PutResponse extends HttpServlet {
 		
 		if(res.isEmpty()) {
 			String query1 =  //TODO: verify query
-					"insert into response(sid,qid,qzid,answer) values "
-					+ "(?,?,?,?) ";
+					"insert into response(sid,qid,qzid,answer,marksobtained) values "
+					+ "(?,?,?,?,-1) ";
 			String res1 = DbHelper.executeUpdateJson(query1, 
 					new DbHelper.ParamType[] { 
 							DbHelper.ParamType.STRING,
