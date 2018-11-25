@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class PutResponse
+ * Servlet implementation class StudentCorrectAnswer
  */
-@WebServlet("/PutResponse")
-public class PutResponse extends HttpServlet {
+@WebServlet("/StudentCorrectAnswer")
+public class StudentCorrectAnswer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PutResponse() {
+    public StudentCorrectAnswer() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,60 +38,39 @@ public class PutResponse extends HttpServlet {
 		
 		String id = (String) session.getAttribute("id");
 		String role = (String) session.getAttribute("role");
-		String qzid = (String) request.getParameter("qzid");
 		String qid = (String) request.getParameter("qid");
-		String ans = (String) request.getParameter("answer");
 		if(!role.equals("student")) {
 			response.getWriter().print("{\"status\": false, \"message\": \"User is not a student\"}");
 			return;
 		}
-		if(qzid == null) {
-			response.getWriter().print("{\"status\": false, \"message\": \"Quiz ID not passed as get parameter\"}");
+		if(qid == null) {
+			response.getWriter().print(DbHelper.errorJson("Question ID not passed as get parameter"));
 			return;
 		}
-		int qz_int = Integer.parseInt(qzid);
-		String query =
-				"select * "
-				+ "from response "
-				+ "where sid = ? and qzid = ?  and qid = ?;";
-		List<List<Object>> res = DbHelper.executeQueryList(query, 
-				new DbHelper.ParamType[] { 
-						DbHelper.ParamType.STRING,
-						DbHelper.ParamType.INT,
-						DbHelper.ParamType.INT}, 
-				new Object[] {id, qzid, qid});
-		
-		if(res.isEmpty()) {
-			String query1 =  //TODO: verify query
-					"insert into response(sid,qid,qzid,answer,marksobtained) values "
-					+ "(?,?,?,?,-1) ";
-			String res1 = DbHelper.executeUpdateJson(query1, 
-					new DbHelper.ParamType[] { 
-							DbHelper.ParamType.STRING,
-							DbHelper.ParamType.INT,
-							DbHelper.ParamType.INT,
-							DbHelper.ParamType.STRING}, 
-					new Object[] {id, qid, qzid, ans});
-			PrintWriter out = response.getWriter();
-			out.print(res1);
-			return;
-		}
-		System.out.println("Hereeee");
+//		String query =  "select * "
+//				+ "from (student natural join takes) natural join quiz "
+//				+ "where sid = ? and qzid = ? ;";
+//		List<List<Object>> res = DbHelper.executeQueryList(query, 
+//				new DbHelper.ParamType[] { 
+//						DbHelper.ParamType.STRING,
+//						DbHelper.ParamType.INT}, 
+//				new Object[] {id, qzid});
+//		
+//		if(res.isEmpty()) {
+//			response.getWriter().print(DbHelper.errorJson("Student is not authorised for the quiz"));
+//			return;
+//		}
 		String query1 =  //TODO: verify query
-				"update response "
-				+ "set answer=? where "
-				+ "sid = ? and qid = ? and "
-				+ "qzid = ?;";
-		String res1 = DbHelper.executeUpdateJson(query1, 
-				new DbHelper.ParamType[] { 
-						DbHelper.ParamType.STRING,
-						DbHelper.ParamType.STRING,
-						DbHelper.ParamType.INT,
-						DbHelper.ParamType.INT}, 
-				new Object[] {ans, id, qid, qzid});
+				"select  opt "
+				+ "from question natural join option "
+				+ "where qid = ? and iscorrect;";
+		String res1 = DbHelper.executeQueryJson(query1, 
+				new DbHelper.ParamType[] {
+						DbHelper.ParamType.INT,}, 
+				new Object[] {qid});
+		
 		PrintWriter out = response.getWriter();
 		out.print(res1);
-		return;
 	}
 
 	/**
@@ -103,3 +82,5 @@ public class PutResponse extends HttpServlet {
 	}
 
 }
+
+
