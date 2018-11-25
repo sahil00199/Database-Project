@@ -5,6 +5,7 @@ insert into student values('s4', 's4', 's4@email.com', 's4');
 insert into student values('s5', 's5', 's5@email.com', 's5');
 insert into student values('s6', 's6', 's6@email.com', 's6');
 insert into student values('s7', 's7', 's7@email.com', 's7');
+insert into student values('a1', 'a1', 'a1@email.com', 'a1');
 
 insert into instructor values('i1', 'i1', 'i1@email.com', 'i1');
 insert into instructor values('i2', 'i2', 'i2@email.com', 'i2');
@@ -13,6 +14,7 @@ insert into instructor values('i4', 'i4', 'i4@email.com', 'i4');
 insert into instructor values('i5', 'i5', 'i5@email.com', 'i5');
 insert into instructor values('i6', 'i6', 'i6@email.com', 'i6');
 insert into instructor values('i7', 'i7', 'i7@email.com', 'i7');
+insert into instructor values('a1', 'a1', 'a1@email.com', 'a1');
 
 insert into ta values('t1', 't1', 't1@email.com', 't1');
 insert into ta values('t2', 't2', 't2@email.com', 't2');
@@ -21,6 +23,7 @@ insert into ta values('t4', 't4', 't4@email.com', 't4');
 insert into ta values('t5', 't5', 't5@email.com', 't5');
 insert into ta values('t6', 't6', 't6@email.com', 't6');
 insert into ta values('t7', 't7', 't7@email.com', 't7');
+insert into ta values('a1', 'a1', 'a1@email.com', 'a1');
 
 insert into course values('CS101', 'Intro to Programming');
 insert into course values('CS201', 'Mid level Programming');

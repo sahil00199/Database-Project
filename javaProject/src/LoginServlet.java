@@ -38,75 +38,75 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		String role = request.getParameter("role");
-		if(role.equals("student")) {
-			String query = "select * from student where sID = ?";
-			List<List<Object>> res = DbHelper.executeQueryList(query, 
-					new DbHelper.ParamType[] {DbHelper.ParamType.STRING}, 
-					new Object[] {id});
-			
-			String dbPass = res.isEmpty()? null : (String)res.get(0).get(0);
-			if(dbPass != null) {
-				if(dbPass.equals(password)) {
-					HttpSession session = request.getSession();
-					session.setAttribute("id", id);
-					session.setAttribute("role", role);
-					response.getWriter().print("{\"status\": true}");
-				}
-				else {
-					response.getWriter().print("{\"status\": false, \"message\": \"Password incorrect\"}");
-				}
-				
+		String role = "student";
+		String query = "select * from student where sID = ?";
+		List<List<Object>> res = DbHelper.executeQueryList(query, 
+				new DbHelper.ParamType[] {DbHelper.ParamType.STRING}, 
+				new Object[] {id});
+		
+		String dbPass = res.isEmpty()? null : (String)res.get(0).get(0);
+		if(dbPass != null) {
+			if(dbPass.equals(password)) {
+				HttpSession session = request.getSession();
+				session.setAttribute("id", id);
+//				session.setAttribute("role", role);
+//					response.getWriter().print("{\"status\": true}");
 			}
 			else {
-				response.getWriter().print("{\"status\": false, \"message\": \"Student with the entered ID is not registered\"}");
+				response.getWriter().print("{\"status\": false, \"message\": \"Password incorrect\"}");
+				return;
 			}
+			
 		}
-		else if(role.equals("instructor")) {
-			String query = "select * from instructor where iID = ?";
-			List<List<Object>> res = DbHelper.executeQueryList(query, 
-					new DbHelper.ParamType[] {DbHelper.ParamType.STRING}, 
-					new Object[] {id});
-			
-			String dbPass = res.isEmpty()? null : (String)res.get(0).get(0);
-			if(dbPass != null) {
-				if(dbPass.equals(password)) {
-					HttpSession session = request.getSession();
-					session.setAttribute("id", id);
-					session.setAttribute("role", role);
-					response.getWriter().print("{\"status\": true}");
-				}
-				else {
-					response.getWriter().print("{\"status\": false, \"message\": \"Password incorrect\"}");
-				}
-				
+		else {
+			response.getWriter().print("{\"status\": false, \"message\": \"The entered ID is not registered\"}");
+			return;
+		}
+		query = "select * from instructor where iID = ?";
+		res = DbHelper.executeQueryList(query, 
+				new DbHelper.ParamType[] {DbHelper.ParamType.STRING}, 
+				new Object[] {id});
+		
+		dbPass = res.isEmpty()? null : (String)res.get(0).get(0);
+		if(dbPass != null) {
+			if(dbPass.equals(password)) {
+				HttpSession session = request.getSession();
+				session.setAttribute("id", id);
+				session.setAttribute("role", role);
+//					response.getWriter().print("{\"status\": true}");
 			}
 			else {
-				response.getWriter().print("{\"status\": false, \"message\": \"Instructor with the entered ID is not registered\"}");
+				response.getWriter().print("{\"status\": false, \"message\": \"Password incorrect\"}");
+				return;
+			}
+			
+		}
+		else {
+			response.getWriter().print("{\"status\": false, \"message\": \"The entered ID is not registered\"}");
+			return;
+		}
+		query = "select * from TA where taID = ?";
+		res = DbHelper.executeQueryList(query, 
+				new DbHelper.ParamType[] {DbHelper.ParamType.STRING}, 
+				new Object[] {id});
+		
+		dbPass = res.isEmpty()? null : (String)res.get(0).get(0);
+		if(dbPass != null) {
+			if(dbPass.equals(password)) {
+				HttpSession session = request.getSession();
+				session.setAttribute("id", id);
+				session.setAttribute("role", role);
+				response.getWriter().print("{\"status\": true}");
+				return;
+			}
+			else {
+				response.getWriter().print("{\"status\": false, \"message\": \"Password incorrect\"}");
+				return;
 			}
 		}
 		else {
-			String query = "select * from TA where taID = ?";
-			List<List<Object>> res = DbHelper.executeQueryList(query, 
-					new DbHelper.ParamType[] {DbHelper.ParamType.STRING}, 
-					new Object[] {id});
-			
-			String dbPass = res.isEmpty()? null : (String)res.get(0).get(0);
-			if(dbPass != null) {
-				if(dbPass.equals(password)) {
-					HttpSession session = request.getSession();
-					session.setAttribute("id", id);
-					session.setAttribute("role", role);
-					response.getWriter().print("{\"status\": true}");
-				}
-				else {
-					response.getWriter().print("{\"status\": false, \"message\": \"Password incorrect\"}");
-				}
-				
-			}
-			else {
-				response.getWriter().print("{\"status\": false, \"message\": \"TA with the entered ID is not registered\"}");
-			}
+			response.getWriter().print("{\"status\": false, \"message\": \"The entered ID is not registered\"}");
+			return;
 		}
 		
 	}

@@ -13,7 +13,7 @@ function buildList(result, list)
 }
 
 function goBack(){ 
-	window.location.replace("StudentHome");
+	window.location.replace("Home.jsp");
 }
 
 
