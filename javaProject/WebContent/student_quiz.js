@@ -142,6 +142,7 @@ function selectOption(qNum,optNum)
 
 function putResponse(qNum, isObjective)
 {
+	c = currTime();
 	var s="";
 	var qid = questions[qNum];
 	if(isObjective){
@@ -159,7 +160,7 @@ function putResponse(qNum, isObjective)
 	$.ajax({
         type: "GET",
         url: "PutResponse",
-        data: {"qzid": qzid, "qid" :qid, "answer" : s},
+        data: {"qzid": qzid, "qid" :qid, "answer" : s, "time" : c},
         success: function(data){
 //        	console.log(data);
         	var data1 = (jQuery.parseJSON(data));
@@ -174,4 +175,18 @@ function putResponse(qNum, isObjective)
     }); 
 	
 	
+}
+
+function currTime()
+{
+	d = new Date()
+	var  h = (d.getHours()<10?'0':'') + d.getHours();
+	  var  m = (d.getMinutes()<10?'0':'') + d.getMinutes();
+	  var s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+	  time = h + ':' + m+':'+s;
+	y = new Date().toLocaleDateString();
+	date = y[6]+y[7]+y[8]+y[9]+'-'+y[0]+y[1]+'-'+y[3]+y[4]
+	s = date + ' '+time
+	console.log(s)
+	return s
 }
