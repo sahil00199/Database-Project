@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class InstructorQuiz
+ * Servlet implementation class TASection
  */
-@WebServlet("/InstructorQuiz")
-public class InstructorQuiz extends HttpServlet {
+@WebServlet("/TASection")
+public class TASection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InstructorQuiz() {
+    public TASection() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,17 +36,34 @@ public class InstructorQuiz extends HttpServlet {
 		
 		String id = (String) session.getAttribute("id");
 		String role = (String) session.getAttribute("role");
-		String qzid= (String) request.getParameter("qzid");
-		if(!role.equals("instructor")) {
-			response.sendRedirect("illegalAccess.html");
+		String secid = (String) request.getParameter("secid");
+		if(!role.equals("TA")) {
+			String html = "<html><head><title>Error</title>" +
+					"</head>" + 
+					"<body>" +
+					"    <div id=\"content\">" +
+					"	 User is not a TA</div> "
+					+ "</body>"
+					+ "</html>" ;
+			response.setContentType("text/html");
+			response.getWriter().print(html);
+			return;
 		}
-		if(qzid == null) {
-			response.sendRedirect("illegalAccess.html");
+		if(secid == null) {
+			String html = "<html><head><title>Error</title>" +
+					"</head>" + 
+					"<body>" +
+					"    <div id=\"content\">" +
+					"	 Section ID not passed as get parameter</div> "
+					+ "</body>"
+					+ "</html>" ;
+			response.setContentType("text/html");
+			response.getWriter().print(html);
+			return;
 		}
+		RequestDispatcher view = request.getRequestDispatcher("/TASection.jsp");
+        view.forward(request, response);
 
-		RequestDispatcher view = request.getRequestDispatcher("instructor_quiz.jsp");
-        view.forward(request, response);  
-	
 	}
 
 	/**
