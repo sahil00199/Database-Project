@@ -40,7 +40,7 @@ public class AutoCompleteTa extends HttpServlet {
 		}
 		String partial = (String) request.getParameter("partial");
 		partial = partial + "%";
-		String query = "select taid as label, name as value "
+		String query = "select name as label, taid as value "
 				+ "from ta "
 				+ "where taid like ? or name like ?";
 		String res = DbHelper.executeQueryJson(query, 

@@ -103,6 +103,10 @@
                             <div id="content"> </div>
                             <a id="linker" href="google.com"">Create Quiz</a><br>
                             <div id="newConvo"></div>
+
+                            <div id="content"> </div>
+                            <a id="talinker" href="google.com"">Create Quiz</a><br>
+                            <div id="tanewConvo"></div>
 	
 
                             
