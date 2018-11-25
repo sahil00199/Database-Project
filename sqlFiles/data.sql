@@ -37,6 +37,10 @@ insert into section(courseid, year, semester) values('CS101', 2018, 'Spring');
 insert into section(courseid, year, semester) values('CS201', 2018, 'Fall');
 insert into section(courseid, year, semester) values('CS301', 2018, 'Spring');
 
+insert into tasection values('t1', 1);
+insert into tasection values('t1', 2);
+insert into tasection values('t2', 2);
+
 insert into teaches values('i1', 1);
 insert into teaches values('i1', 4);
 insert into teaches values('i2', 2);
