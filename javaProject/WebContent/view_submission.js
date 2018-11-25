@@ -1,6 +1,25 @@
 var n =10;
 var questions = new Array(200);
 var opts = new Array(200);
+
+function updateMarks(qNum){
+	var qid = questions[qNum];
+	var marks = document.getElementById("marks"+qNum).value;
+	$.ajax({
+        type: "GET",
+        url: "UpdateMarks",
+        data: {"sid": sid, "qid" : qid, "qzid" : qzid, "marks" : marks},
+        success: function(data){
+        	var data1 = (jQuery.parseJSON(data));
+        	if(data1.status){
+        		
+        	}
+        	else{
+        		alert(data1.message);
+        	}
+        }
+    });  
+}
 function getResponse(qNum, isObjective){
 	var qid = questions[qNum];
 	$.ajax({
@@ -11,8 +30,10 @@ function getResponse(qNum, isObjective){
         	var data1 = (jQuery.parseJSON(data));
         	if(data1.status){
         	    var ans = "";
+        	    var marks = null;
         		$.each(data1.data, function(k, v) {
         			ans = v.answer;
+        			marks = v.marksobtained;
         		});
         		if(isObjective == 'true'){
         			var arr = ans.split(" ");
@@ -27,6 +48,8 @@ function getResponse(qNum, isObjective){
         			console.log(ans);
         			document.getElementById(""+qNum).innerHTML = ans;
         		}
+        		if(marks != 'null')
+        			document.getElementById("marks"+qNum).value = marks;
         	}
         	else{
         		console.log(data1.message);
@@ -49,14 +72,14 @@ function optionList(result, qlist, ans, isObjective, qNum)
     		}
     		
     		$.each(result, function(k, v) {
-    			str+="<input type=\"checkbox\" name=\"ops\" id ="+ qNum + "o"+ k +" onclick=\"selectOption("+qNum+","+k+")\">"+ v.opt + "<br>" ;
+    			str+="<input type=\"checkbox\" name=\"ops\" id ="+ qNum + "o"+ k +" >"+ v.opt + "<br>" ;
             });
 //    		str+="<form> <button type=\"button\" onclick=\"putResponse("+qNum+", "+ isObjective+ ")\" > Save answer</button> </form><br>";
     		qlist.html(str);
     		
     	}
     	else{
-    		str+="<p  id ="+ qNum +"></p>";
+    		str+="<p id ="+ qNum +"></p>";
     		str+="<br>";
 //    		str+="<form> <button type=\"button\" onclick=\"putResponse("+qNum+", "+ isObjective+ ")\" > Save answer</button> </form><br>";
     		qlist.html(str);
@@ -74,9 +97,13 @@ function questionList(result, list, qzid)
 			var question = "<p>Q."+ k1.toString() + ": " + v.problem +"     [Marks:"+v.maxmarks.toString()+ "] </p>" +
 					" <p id = op" + v.qid + " > </p>";
 			list.append(question);
-			var answer = "<p id = ans" + v.qid + "> </p><br>";
+			var answer = "<p id = ans" + v.qid + "> </p>";
 			questions[k] = v.qid;
 			list.append(answer);
+			var marks = "Marks: <input type=\"text\" size=\"4\" name=\"marks\" id=\"marks" + k + "\">";
+			marks+="<button type=\"button\" onclick=\"updateMarks("+ k +")\" >Update</button>";
+			list.append(marks);
+			list.append("<div class='separator2'></div>")
     		$.ajax({
 		        type: "GET",
 		        url: "InstructorQuizQuesOptions",
@@ -106,7 +133,7 @@ function questionList(result, list, qzid)
 $(document).ready(function() {
     document.getElementById("content").innerHTML =
             "<h3>"+sid+"</h3><br><div id = \"questions\"></div><br>";
-    document.getElementById("heading").innerHTML =  "Quiz";
+    document.getElementById("heading").innerHTML =  "Submission";
     $.ajax({
         type: "GET",
         url: "InstructorQuizQuestions",
@@ -133,41 +160,4 @@ function selectOption(qNum,optNum)
 {
 	opts[qNum][optNum] = 1- opts[qNum][optNum];
 }
-
-function putResponse(qNum, isObjective)
-{
-	var s="";
-	var qid = questions[qNum];
-	if(isObjective){
-		for(var i=0;i<n;i++)
-		{
-			if(opts[qNum][i]==1)
-				{
-				s+=i+ " ";
-			}
-		}
-	}
-	else{
-		s = document.getElementById(""+qNum).value;
-	}
-	$.ajax({
-        type: "GET",
-        url: "PutResponse",
-        data: {"qzid": qzid, "qid" :qid, "answer" : s},
-        success: function(data){
-//        	console.log(data);
-        	var data1 = (jQuery.parseJSON(data));
-        	if(data1.status){
-	            alert("Successful");
-        	}
-        	else{
-        		alert(data1.message);
-        		//window.location.replace("illegalAccess.html");
-        	}
-        }
-    }); 
-	
-	
-}
-
 

@@ -81,7 +81,7 @@ function showCreateQuiz()
 function showTA()
 {
     var currentHTML = "<form>" +
-    "Enter the taid: <input type=\"text\" id = \"taid\" name=\"taid\">"+
+    "Enter the ID or the name of the TA: <input type=\"text\" id = \"taid\" name=\"taid\">"+
     "<input type=\"text\" id = \"tapid\" name=\"tapid\" hidden>"+
     "<button type=\"button\" onclick=\"addTAQuiz()\">Submit</button>"+
 //    "value=\"Submit\" />"+
@@ -97,7 +97,7 @@ function showTA()
 //                     console.log(document.getElementById("tttopic").value);
 //                     console.log(json.data);
                      for (var i = 0; i < json.data.length; i++){
-                    	 json.data[i].label = json.data[i].value + "_" + json.data[i].label;
+                    	 json.data[i].label = json.data[i].value + " : " + json.data[i].label;
                      }
 //                     console.log(json.data);
                      response(json.data);

@@ -3,44 +3,11 @@
  	<link rel="stylesheet" href="jquery-ui.css" />    
     <link rel="stylesheet" href="jquery.dataTables.min.css"/>	 
 	<script src="jquery-3.3.1.js"> </script><!-- Latest compiled and minified CSS -->
-	<script src="jquery.dataTables.min.js"></script>    
+	<script>var qzid = <%= request.getParameter("qzid") %>; </script>
+    <script src="instructor_quiz.js"></script>
+    <script src="jquery.dataTables.min.js"></script>    
     <script src="jquery-ui.min.js"></script>   
-    <script>
-function validateForm(){
-	var id = document.getElementById("id").value;
-	var password = document.getElementById("password").value;
-	var role = "student";
-	if(id.length == 0){
-		document.getElementById("error").style.color = "red";
-		document.getElementById("error").innerHTML = "ID is required";
-		return;
-	}
-	if(password.length == 0){
-		document.getElementById("error").style.color = "red";
-		document.getElementById("error").innerHTML = "Password is required";
-		return;
-	}
-	var xhttp;
-	xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-	  if (this.readyState == 4 && this.status == 200) {
-		var response = JSON.parse(this.responseText);
-		if(response.status){
-			window.location.replace("Home.jsp");
-		}
-		else{
-			document.getElementById("error").innerHTML = response.message;
-			console.log(response.message);
-		}
-	    
-	  }
-	};
-	
-	xhttp.open("POST", "LoginServlet", true);
-	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-	xhttp.send("id=" + id + "&password=" + password);
-}
-</script>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Quiz</title>
@@ -69,30 +36,67 @@ function validateForm(){
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
 	<!-- <div class='preloader'><div class='loaded'>&nbsp;</div></div> -->
-        
+        <header id="main_menu" class="header navbar-fixed-top">            
+            <div class="main_menu_bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="nave_menu">
+                            <nav class="navbar navbar-default" id="navmenu">
+                                <div class="container-fluid">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+                                        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" onClick=goBack()>
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button> -->
+                                        <button type="button" onClick="window.location.href('InstructorHome')" class="btn">
+                                            Home
+                                        </button>
+                                        
+                                    </div>
+
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+
+                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <button type="button" class="btn" align="right" onClick="window.location.replace('LogoutServlet')">
+                                            	Logout 
+                                        	</button>
+                                        
+                                        </ul>    
+                                    </div>
+
+                                    
+
+                                </div>
+                            </nav>
+                        </div>  
+                    </div>
+
+                </div>
+
+            </div>
+        </header> <!--End of header -->
 <!--     <div class='preloader'><div class='loaded'>&nbsp;</div></div>
  -->    
+    <p id="error" style="color:red"></p>
+
+
         <!-- Contact Section -->
-        <section id="contact" class="contactus margin-top-0">
+        <section id="contact" class="contactus margin-top-120">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="main_contact sections">
                             <div class="head_title text-center">
-                                <h1 id="heading">Login</h1>
+                                <h1 id="heading">Quiz</h1>
                             </div>
 
-                            <form>
-		<p id="error" style="color:red"></p>
-		ID<br> <input type="text" name="id" id="id" maxlength="50" required> <br><br>
-		Password<br> <input type="password" name="password" id="password" maxlength="50" required> <br><br>
-		<!-- <input type="radio" name="role" value="student" checked> Student <br>
-		<input type="radio" name="role" value="instructor"> Instructor <br>
-		<input type="radio" name="role" value="TA"> Teaching assistant <br> <br> -->
-		<button type="button" onclick="validateForm()">Login</button>
-	</form>
-	<br><br>
-	<a href = "signup.html"> Sign up</a>
+                            <br><br>
+                            <div id="content">
+                            </div> 
 
                     </div>
                 </div><!-- End of row -->
