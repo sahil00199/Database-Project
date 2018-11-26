@@ -201,7 +201,7 @@ $(document).ready(function() {
         "<button type=\"button\" class=\"btn-primary\" onclick=\"autograde()\" >Auto grade objective questions</button><br><br>"+
         "<div id = \"weightage\"></div><br>"+
 	"<div id = \"questions\"></div><br>"+
-        "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AddQuizQuestion?qzid=" + qzid + "';\" >Add another Question</button>";
+        "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AddQuizQuestion?qzid=" + qzid + "';\" > + Add Question</button>";
     schedule();
     questions();
     $.ajax({
