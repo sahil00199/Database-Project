@@ -53,7 +53,43 @@ public class GetInstructorSectionStats extends HttpServlet {
 		List<List<Object>> metaData = DbHelper.executeQueryList(metaQuery, new DbHelper.ParamType[] 
 				{DbHelper.ParamType.INT}, new String[] {secid});
 		
+		
+		
 		String theString = "";
+		
+		theString += "<div class=\"limiter\">\n" + 
+				"		<div class=\"container-table100\">\n" + 
+				"			<div class=\"wrap-table100\">\n" + 
+				"				<div class=\"table100 ver1 m-b-110\">\n" + 
+				"					<div class=\"table100-head\">";
+		theString += "<table>\n";
+			theString += "<tr class=\"row100 head\">\n";
+				theString += "<th class=\"cell100 column1\">Student Name</th>\n";
+				for (int i = 0 ; i < metaData.size(); i ++)
+				{
+					theString += "<th class=\"cell100 column2\">" + (String) metaData.get(i).get(0) + "</th>\n";
+				}
+			theString += "</tr>\n";
+			theString += "</thead>\n" + 
+					"						</table>\n" + 
+					"					</div>";
+			theString += "<div class=\"table100-body js-pscroll\">\n" + 
+					"						<table>\n" + 
+					"							<tbody>";
+//			for (int i = 0 ; i < topics.size() ; i ++)
+//			{
+//				theString += "<tr class=\"row100 body\">\n";
+//				theString += "<td class=\"cell100 column1\">" + topics.get(i) + "</td>\n";
+//				theString += "<td class=\"cell100 column2\">" + maxMarks.get(topics.get(i)) + "</td>\n";
+//				theString += "<td class=\"cell100 column3\">" + marksObtained.get(topics.get(i)) + "</td>\n";
+//				theString += "</tr>\n";
+//			}
+		theString += "</tbody>\n" + 
+				"						</table>\n" + 
+				"					</div>\n" + 
+				"				</div></div></div>";
+
+		
 		
 		System.out.println(theString);
 		PrintWriter out = response.getWriter();
