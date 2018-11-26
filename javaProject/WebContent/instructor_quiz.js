@@ -98,8 +98,35 @@ function questionList(result, list, qzid)
 			
 			var taAssign = "<p id = ta" + v.qid + "><form>" +
 			" Enter TA id: <input type=\"text\" id = \"taid\" name=\"taid\">" +
+			"<input type=\"text\" id = \"tapid\" name=\"tapid\" hidden><br>"+
 			" <button type=\"button\" class=\"btn-primary\" onclick=\"addta("+v.qid+")\" >" +
 			" Assign TA</button> </form> </p>";
+			$("#taid").autocomplete({
+		        source : function(request,response){
+		            var xhttp;
+		            xhttp = new XMLHttpRequest();
+		            xhttp.onreadystatechange = function(){
+		                 if (this.readyState == 4 && this.status == 200){
+		                     json= JSON.parse(this.responseText);
+//		                     console.log(document.getElementById("tttopic").value);
+//		                     console.log(json.data);
+		                     for (var i = 0; i < json.data.length; i++){
+		                    	 json.data[i].label = json.data[i].value + " : " + json.data[i].label;
+		                     }
+//		                     console.log(json.data);
+		                     response(json.data);
+//		                     console.log(document.getElementById("tttopic").value);
+		                 }
+		            }
+		            xhttp.open("GET", "AutoCompleteTa?partial="+request.term, true);
+		            xhttp.send();
+		        },
+		        select: function (event, ui) {
+//		        	var toshow = ui.item.label + "_" + ui.item.value;
+		            $("#taid").val(ui.item.label); // display the selected text
+		            $("#tapid").val(ui.item.value); // save selected id to hidden input
+		        }
+		    });
 	list.append(taAssign);
 			list.append("<div class='separator2'></div><br>");
     		$.ajax({
@@ -312,8 +339,8 @@ function updateschedule(qzid)
 {
 	var starttime = document.getElementById('sttime').value;
 	var duration = document.getElementById('dur').value;
-	console.log(starttime);
-	console.log(duration);
+//	console.log(starttime);
+//	console.log(duration);
 	$.ajax({
         type: "GET",
         url: "InstructorUpdateQuizTimings",
@@ -323,6 +350,7 @@ function updateschedule(qzid)
         	var data1 = (jQuery.parseJSON(data));
         	if(data1.status){
 	            alert("Successful");
+	            document.location.reload(); 
         	}
         	else{
         		alert(data1.message);
@@ -330,7 +358,7 @@ function updateschedule(qzid)
         	}
         }
     }); 
-	document.location.reload(); 
+	
 }
 
 function autograde(){
@@ -363,13 +391,14 @@ function addta(qid)
         	console.log(data1);
         	if(data1.status){
 	            alert("Successfully added TA");
+	            document.location.reload();
         	}
         	else{
         		alert(data1.message);
         	}
         }
     });
-	document.location.reload();
+//	document.location.reload();
 	}
 
 function taList(result, list)
