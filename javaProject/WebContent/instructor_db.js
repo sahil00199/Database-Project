@@ -70,7 +70,7 @@ function questionList(result, list)
 		    }); 
 			var answer = "<p id = ans" + v.qid + "> </p>";
 			list.append(answer);
-			var removeQuestion = "<form> <button type=\"button\" class=\"btn-primary\" onclick=\"removeQuestion("+v.qid+")\" > Remove Question</button> </form><br>";
+			var removeQuestion = "<form> <button type=\"button\" onclick=\"removeQuestion("+v.qid+")\" > Remove Question</button> </form><br>";
 			list.append(removeQuestion);
 			list.append("<div class='separator2'></div><br>");
     		$.ajax({
@@ -100,7 +100,6 @@ function questionList(result, list)
 $(document).ready(function() {
 //	document.title = "Course:"
     document.getElementById("content").innerHTML =
-            "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='CreateQuestion';\">Add Question</button><br><br>"+
             "<div id = \"questions\"></div><br>";
     document.getElementById("heading").innerHTML =  "Database";
     questions();

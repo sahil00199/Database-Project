@@ -1,7 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-
 <html>
 
 <head>
@@ -100,12 +96,16 @@
                                 <h1 id="heading" >Instructor Section</h1>
                             </div>
 
-                            <div id="content"> </div>
-                            <a id="linker" href="google.com"">Create Quiz</a><br>
-                            <div id="newConvo"></div>
+							<div id="content3"> </div>
+                            <a id="allinker" href="google.com">View All Grades</a><br>
+                            <div id="alnewConvo"></div>
 
                             <div id="content"> </div>
-                            <a id="talinker" href="google.com"">Add a TA</a><br>
+                            <a id="linker" href="google.com">Create Quiz</a><br>
+                            <div id="newConvo"></div>
+
+                            <div id="content2"> </div>
+                            <a id="talinker" href="google.com">Add a TA</a><br>
                             <div id="tanewConvo"></div>
 	
 

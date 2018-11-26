@@ -40,7 +40,7 @@ function getResponse(){
         			ans = v.answer;
         			marks = v.marksobtained;
         		});
-        		document.getElementById("student").innerHTML = sid;
+        		document.getElementById("student").innerHTML = "Student ID : " + sid;
         		if(isobjective == 'true'){
         			for(var i=0;i<n;i++){
             			opts[qNum][i]=0;
@@ -114,7 +114,7 @@ function questionList(result, list, qzid)
 			questions[k] = v.qid;
 			list.append(answer);
 			var marks = "Marks: <input type=\"text\" size=\"4\" name=\"marks\" id=\"marks" + k + "\">";
-			marks+="<button type=\"button\" class=\"btn-primary\" onclick=\"updateMarks()\" >Update</button>";
+			marks+="<button type=\"button\" onclick=\"updateMarks()\" >Update</button>";
 			list.append(marks);
     		$.ajax({
 		        type: "GET",

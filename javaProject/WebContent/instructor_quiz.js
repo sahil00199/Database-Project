@@ -70,7 +70,7 @@ function questionList(result, list, qzid)
 		    }); 
 			var answer = "<p id = ans" + v.qid + "> </p>";
 			list.append(answer);
-			var removeQuestion = "<form> <button type=\"button\" onclick=\"removeQuestion("+v.qid+")\" > Remove Question</button> </form><br>";
+			var removeQuestion = "<form> <button type=\"button\" class=\"btn-primary\" onclick=\"removeQuestion("+v.qid+")\" > Remove Question</button> </form>";
 			list.append(removeQuestion);
 			list.append("<div class='separator2'></div><br>");
     		$.ajax({
@@ -100,16 +100,17 @@ function questionList(result, list, qzid)
 function scheduler(result, list, qzid)
 {
     // Remove current options
-    list.html('Schedule : <br>');
+    list.html('');
     if(result != ''){
     	$.each(result, function(k, v) {
 //    		console.log(v);
-			var s = "Start time:" + v.start + "<br>" + "Duration : "+ v.duration ;
+			var s = "Start time : " + v.start + "<br>" + "Duration : "+ v.duration + "<br><br>" ;
 			list.append(s);
 			var updateSchedule = "<form> " +
-			 " Enter the start time: <input type=\"text\" id = \"sttime\" name=\"sttime\" placeholder=\"YYYY-MM-DD HH:MM:SS\">"+
-			    " Enter the duration: <input type=\"text\" id = \"dur\" name=\"dur\" placeholder=\"days HH:MM:SS\">"+
-					"<button type=\"button\" onclick=\"updateschedule("+qzid+")\" > Update Schedule</button> </form><br>"+ "<p id=\"max\"> </p>";
+			 "<p id=\"max\"> </p>" +
+			 " Enter start time: <input type=\"text\" id = \"sttime\" name=\"sttime\" placeholder=\"YYYY-MM-DD HH:MM:SS\"><br>"+
+			 " Enter duration: <input type=\"text\" id = \"dur\" name=\"dur\" placeholder=\"days HH:MM:SS\"><br>"+
+			 "<button type=\"button\" class=\"btn-primary\" onclick=\"updateschedule("+qzid+")\" > Update Schedule</button> </form>";
 			console.log(updateSchedule);
 			list.append(updateSchedule);
 			$.ajax({
@@ -153,11 +154,9 @@ $(document).ready(function() {
     document.getElementById("heading").innerHTML =  "Quiz";
     document.getElementById("content").innerHTML =
         "<p id = \"schedule\"></p>"+
-        "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AllSubmissions?qzid="+ qzid +"';\" >View all submissions</button>&nbsp&nbsp" +
-        "<button type=\"button\" class=\"btn-primary\" onclick=\"autograde()\" >Auto grade objective questions</button><br><br>"+
+        "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AllSubmissions?qzid="+ qzid +"';\" >View all submissions</button><br><br>" +
         "<div id = \"questions\"></div><br>"+
         "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AddQuizQuestion?qzid=" + qzid + "';\" >Add another Question</button>";
-
     schedule();
     questions();
 });
@@ -228,7 +227,30 @@ function removeQuestion(qid)
 	    	}
 	    }
 	});
-	questions();
+	document.getElementById("content").innerHTML =
+        "<div id = \"questions\"></div><br>";
+	document.getElementById("heading").innerHTML =  "Quiz";
+	document.getElementById("heading").innerHTML +=  "<p><a id=\"newQuestionQuiz\" href=\"AddQuizQuestion?qzid=" + qzid + "\"> Add Question</a></p>";
+	$.ajax({
+	    type: "GET",
+	    url: "InstructorQuizQuestions",
+	    data: {"qzid": qzid},
+	    success: function(data){
+	//    	console.log(data);
+	    	var data1 = (jQuery.parseJSON(data));
+	    	if(data1.status){
+	            questionList(
+	                data1.data,
+	                $('#questions'),
+	                qzid
+	            );
+	    	}
+	    	else{
+	    		window.location.replace("illegalAccess.html");
+	    		console.log(data1.message);
+	    	}
+	    }
+	}); 
 }
 
 function currTime()
@@ -270,20 +292,5 @@ function updateschedule(qzid)
 	document.location.reload() 
 }
 
-function autograde(){
-	$.ajax({
-        type: "GET",
-        url: "AutoCorrectObjective",
-        data: {"qzid": qzid},
-        success: function(data){
-        	var data1 = (jQuery.parseJSON(data));
-        	if(data1.status){
-	            alert("Successfully graded objective questions");
-        	}
-        	else{
-        		alert(data1.message);
-        	}
-        }
-    }); 
-}
+
 

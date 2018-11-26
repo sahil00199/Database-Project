@@ -40,7 +40,7 @@ function questionList(result, list, qzid)
 			
 			var answer = "<p id = ans" + v.qid + "> </p>";
 			list.append(answer);
-			var grade_button = "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='Grade?qzid="+ qzid + "&qid=" + v.qid + "'\">Grade Question</button>";
+			var grade_button = "<button type=\"button\" onclick=\"location.href='Grade?qzid="+ qzid + "&qid=" + v.qid + "'\">Grade Question</button>";
 			list.append(grade_button);
 			list.append("<div class='separator2'></div><br>");
     		$.ajax({
