@@ -51,7 +51,7 @@ public class AssignTaQues extends HttpServlet {
 		String query2 = "select secid from quiz where qzid =  ?;";
 		List<List<Object>> output = DbHelper.executeQueryList(query2, new DbHelper.ParamType[] 
 				{DbHelper.ParamType.INT }, new String[] {qzid});
-		if (output.size() != 0) secid = (String) output.get(0).get(0);
+		if (output.size() != 0) secid =  output.get(0).get(0).toString();
 		else {
 			String toout = "{\"status\" : \"false\", \"error\" : \"taid does not exist\"}";
 			PrintWriter out = response.getWriter();
@@ -60,7 +60,7 @@ public class AssignTaQues extends HttpServlet {
 		}
 		String query1 =  //TODO: verify query
 				"insert into checked values (?, ?, ?, ?, FALSE);";
-		String res1 = DbHelper.executeQueryJson(query1, 
+		String res1 = DbHelper.executeUpdateJson(query1, 
 				new DbHelper.ParamType[] {
 						DbHelper.ParamType.STRING,
 						DbHelper.ParamType.INT,
