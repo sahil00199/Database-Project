@@ -1,6 +1,9 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,6 +41,23 @@ public class GetInstructorSectionStats extends HttpServlet {
 			response.sendRedirect("illegalAccess.html");
 		}
 		String secid = (String) request.getParameter("secid");
+		String query  = "select sid, qzname, sum(marksobtained) from (select sid, qzname, (case when "
+				+ "marksobtained = -1 or marksobtained is null then 0 else marksobtained end) from "
+				+ "(select takes.sid, quiz.qzname from takes, quiz where takes.secid = ? and "
+				+ "quiz.secid = ?) as foo natural left outer join response) as bar group by "
+				+ "qzname, sid order by sid, qzname asc;";
+		List<List<Object>> output = DbHelper.executeQueryList(query, new DbHelper.ParamType[] 
+				{DbHelper.ParamType.INT,DbHelper.ParamType.INT }, new String[] {secid, secid});
+		
+		String metaQuery = "select qzname from quiz where secid = ? order by qzname asc;";
+		List<List<Object>> metaData = DbHelper.executeQueryList(metaQuery, new DbHelper.ParamType[] 
+				{DbHelper.ParamType.INT}, new String[] {secid});
+		
+		String theString = "";
+		
+		System.out.println(theString);
+		PrintWriter out = response.getWriter();
+		out.print(theString);
 	}
 
 	/**

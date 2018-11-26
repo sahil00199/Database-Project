@@ -8,8 +8,8 @@
 	<link rel="stylesheet" href="jquery-ui.css" />    
     <link rel="stylesheet" href="jquery.dataTables.min.css"/>	 
 	<script src="jquery-3.3.1.js"> </script><!-- Latest compiled and minified CSS -->
-    <script> var secid = <%= request.getParameter("secid") %> </script>
- 	<script src="instructor_section.js"></script>
+    <script> var secid = <%= request.getSession().getAttribute("id") %> </script>
+ 	<script src="instructor_section_stats.js"></script>
 	
     <script src="jquery.dataTables.min.js"></script>    
     <script src="jquery-ui.min.js"></script>   
@@ -101,13 +101,7 @@
                             </div>
 
                             <div id="content"> </div>
-                            <a id="linker" href="google.com"">Create Quiz</a><br>
-                            <div id="newConvo"></div>
-
-                            <div id="content"> </div>
-                            <a id="talinker" href="google.com"">Add a TA</a><br>
-                            <div id="tanewConvo"></div>
-	
+                            
 
                             
                     </div>

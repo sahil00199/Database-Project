@@ -132,8 +132,7 @@ function questionList(result, list, qzid)
 
 $(document).ready(function() {
     document.getElementById("content").innerHTML =
-            "<h3>Student ID : "+sid+"</h3><br>" +
-            "<div id = \"questions\"></div><br>";
+            "<h3>"+sid+"</h3><br><div id = \"questions\"></div><br>";
     document.getElementById("heading").innerHTML =  "Submission";
     $.ajax({
         type: "GET",

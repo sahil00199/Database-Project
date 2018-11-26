@@ -70,7 +70,7 @@ function questionList(result, list, qzid)
 		    }); 
 			var answer = "<p id = ans" + v.qid + "> </p>";
 			list.append(answer);
-			var removeQuestion = "<form> <button type=\"button\" class=\"btn-primary\" onclick=\"removeQuestion("+v.qid+")\" > Remove Question</button> </form>";
+			var removeQuestion = "<form> <button type=\"button\" onclick=\"removeQuestion("+v.qid+")\" > Remove Question</button> </form><br>";
 			list.append(removeQuestion);
 			list.append("<div class='separator2'></div><br>");
     		$.ajax({
@@ -100,17 +100,16 @@ function questionList(result, list, qzid)
 function scheduler(result, list, qzid)
 {
     // Remove current options
-    list.html('');
+    list.html('Schedule : <br>');
     if(result != ''){
     	$.each(result, function(k, v) {
 //    		console.log(v);
-			var s = "Start time : " + v.start + "<br>" + "Duration : "+ v.duration + "<br><br>" ;
+			var s = "Start time:" + v.start + "<br>" + "Duration : "+ v.duration ;
 			list.append(s);
 			var updateSchedule = "<form> " +
-			 "<p id=\"max\"> </p>" +
-			 " Enter start time: <input type=\"text\" id = \"sttime\" name=\"sttime\" placeholder=\"YYYY-MM-DD HH:MM:SS\"><br>"+
-			 " Enter duration: <input type=\"text\" id = \"dur\" name=\"dur\" placeholder=\"days HH:MM:SS\"><br>"+
-			 "<button type=\"button\" class=\"btn-primary\" onclick=\"updateschedule("+qzid+")\" > Update Schedule</button> </form>";
+			 " Enter the start time: <input type=\"text\" id = \"sttime\" name=\"sttime\" placeholder=\"YYYY-MM-DD HH:MM:SS\">"+
+			    " Enter the duration: <input type=\"text\" id = \"dur\" name=\"dur\" placeholder=\"days HH:MM:SS\">"+
+					"<button type=\"button\" onclick=\"updateschedule("+qzid+")\" > Update Schedule</button> </form><br>"+ "<p id=\"max\"> </p>";
 			console.log(updateSchedule);
 			list.append(updateSchedule);
 			$.ajax({
@@ -153,10 +152,10 @@ $(document).ready(function() {
 	currTime()
     document.getElementById("heading").innerHTML =  "Quiz";
     document.getElementById("content").innerHTML =
-        "<p id = \"schedule\"></p>"+
-        "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AllSubmissions?qzid="+ qzid +"';\" >View all submissions</button><br><br>" +
-        "<div id = \"questions\"></div><br>"+
-        "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AddQuizQuestion?qzid=" + qzid + "';\" >Add another Question</button>";
+        "<p><a id=\"newQuestionQuiz\" href=\"AddQuizQuestion?qzid=" + qzid + "\"> Add Question</a></p>\n"+
+        "<button type=\"button\" onclick=\"location.href='AllSubmissions?qzid="+ qzid +"';\" >View all submissions</button>" +
+        "<p id = \"schedule\"></p><br>"+
+        "<div id = \"questions\"></div><br>";
     schedule();
     questions();
 });
