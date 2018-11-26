@@ -41,6 +41,7 @@ public class PutResponse extends HttpServlet {
 		String qzid = (String) request.getParameter("qzid");
 		String qid = (String) request.getParameter("qid");
 		String ans = (String) request.getParameter("answer");
+		String time = (String) request.getParameter("time");
 		if(!role.equals("student")) {
 			response.getWriter().print("{\"status\": false, \"message\": \"User is not a student\"}");
 			return;
@@ -50,6 +51,19 @@ public class PutResponse extends HttpServlet {
 			return;
 		}
 		int qz_int = Integer.parseInt(qzid);
+		String query_check = "select * from quiz where qzid =? and start <= cast(? as timestamp) and cast(? as timestamp) <= ("
+				+ "start + duration) ";
+		List<List<Object>> res_check = DbHelper.executeQueryList(query_check, 
+				new DbHelper.ParamType[] { 
+						DbHelper.ParamType.INT,
+						DbHelper.ParamType.STRING,
+						DbHelper.ParamType.STRING}, 
+				new Object[] {qzid, time, time});
+		if(res_check.isEmpty())
+		{
+			response.getWriter().print("{\"status\": false, \"message\": \"You cannot modify a response outside quiz timings\"}");
+			return;
+		}
 		String query =
 				"select * "
 				+ "from response "
