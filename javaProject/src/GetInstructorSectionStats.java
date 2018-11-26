@@ -42,16 +42,19 @@ public class GetInstructorSectionStats extends HttpServlet {
 		}
 		String secid = (String) request.getParameter("secid");
 		System.out.println(secid);
-		String query  = "select sid, qzname, sum(marksobtained) \n" + 
-				"from (select sid, qzname, (case when marksobtained = -1 or marksobtained is null \n" + 
-				"then 0 else marksobtained end) \n" + 
-				"from (select takes.sid, quiz.qzname, quiz.qzid from takes, quiz \n" + 
-				"where takes.secid = ? and quiz.secid = ?) as foo natural left outer join response)\n" + 
-				"as bar group by qzname, sid order by sid, qzname asc;";
+		String query  = "with temp(sid, qzname, msum) as (select sid, qzname, sum(marksobtained) \n" + 
+				"from (select sid, qzname, (case when marksobtained = -1 or marksobtained \n" + 
+				"is null then 0 else marksobtained end) from \n" + 
+				"(select takes.sid, quiz.qzname, quiz.qzid from takes, quiz\n" + 
+				" where takes.secid = ? and quiz.secid = ?) as foo natural left outer join response)\n" + 
+				"  as bar group by qzname, sid order by sid, qzname asc),\n" + 
+				"temp2 (sid, qzname, msum) as (select sid, 'Total', sum(msum) from temp group by sid)\n" + 
+				"select * from (select * from temp union select * from temp2) as allmarks order by sid, qzname";
 		List<List<Object>> output = DbHelper.executeQueryList(query, new DbHelper.ParamType[] 
 				{DbHelper.ParamType.INT,DbHelper.ParamType.INT }, new String[] {secid, secid});
 		
-		String metaQuery = "select qzname from quiz where secid = ? order by qzname asc;";
+		String metaQuery = "(select qzname from quiz where secid = ? union \n" + 
+				"select distinct'Total' from student) order by qzname asc;";
 		List<List<Object>> metaData = DbHelper.executeQueryList(metaQuery, new DbHelper.ParamType[] 
 				{DbHelper.ParamType.INT}, new String[] {secid});
 		
