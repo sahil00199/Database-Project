@@ -18,8 +18,11 @@ function goBack(){
 }
 $(document).ready(function() {
     document.getElementById("content").innerHTML =
-        " <a id=\"linker\" href=\"google.com\">Create Section</a><br><div id=\"newConvo\"></div>" +
-            "<div id = \"contentList\"></div><br>";
+    	"<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='InstructorDB';\">  View Question Database </button><br><br>" +
+        "<h4>Your Sections :</h4>"+
+        "<div id = \"contentList\"> </div><br>"+
+        "<button type=\"button\" class=\"btn-primary\" onclick=\"displayCreateSection()\">Create Section</button><br>"+
+        "<div id=\"form1\"></div>";
     loadSections();
     $("#course").autocomplete({
         source : function(request,response){

@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,6 +64,9 @@ public class AddQuizQuestion extends HttpServlet {
 //			response.getWriter().print(html);
 //			return;
 		}
+		RequestDispatcher view = request.getRequestDispatcher("/add_quiz_question.jsp?qzid="+qzid);
+        view.forward(request, response);
+        /*
 		String html = "<html><head><title>Add question</title>" + 
 				"    <script src=\"jquery-3.3.1.js\"> </script>" + 
 				"    <script src=\"jquery.dataTables.min.js\"></script>" + 
@@ -82,6 +87,7 @@ public class AddQuizQuestion extends HttpServlet {
 				+ "</html>" ;
 		response.setContentType("text/html");
 		response.getWriter().print(html);
+		*/
 	
 	}
 

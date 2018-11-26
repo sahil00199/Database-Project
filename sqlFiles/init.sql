@@ -144,7 +144,7 @@ create table response(
 	foreign key(sID) references student
 		on delete cascade,
 	foreign key(qzID, qID) references quizQuestion
-		on delete set null,
+		on delete cascade,
 	primary key(sID, qzID, qID)
 );
 
