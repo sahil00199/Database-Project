@@ -5,7 +5,7 @@
 
 $(document).ready(function() {
 //	document.title = "Course:"
-	currTime()
+//	currTime()
     document.getElementById("heading").innerHTML =  "Quiz schedule. Please note down the timings and be ready";
     document.getElementById("content").innerHTML  = "<p id = \"schedule\"></p><br>";
     schedule();
