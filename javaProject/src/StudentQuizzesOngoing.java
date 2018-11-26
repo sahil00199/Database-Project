@@ -40,6 +40,8 @@ public class StudentQuizzesOngoing extends HttpServlet {
 		String role = (String) session.getAttribute("role");
 		String secid = (String) request.getParameter("secid");
 		String time = (String) request.getParameter("time");
+		System.out.println(role);
+		System.out.println(secid);
 		if(!role.equals("student")) {
 			response.getWriter().print("{\"status\": false, \"message\": \"User is not a student\"}");
 			return;
