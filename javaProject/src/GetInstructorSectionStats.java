@@ -56,7 +56,7 @@ public class GetInstructorSectionStats extends HttpServlet {
 		
 		int numQuizzes = metaData.size();
 		
-		System.out.println(");)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))0");
+		//System.out.println(");)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))0");
 		String theString = "";
 		
 		theString += "<div class=\"limiter\">\n" + 
@@ -81,11 +81,11 @@ public class GetInstructorSectionStats extends HttpServlet {
 			for (int i = 0 ; i < output.size() / numQuizzes ; i ++)
 			{
 				theString += "<tr class=\"row100 body\">\n";
-				theString += "<td class=\"cell100 column1\">" + (String) output.get(numQuizzes*i).get(2) + "</td>\n";
+				theString += "<td class=\"cell100 column1\">" + (String) output.get(numQuizzes*i).get(0) + "</td>\n";
 				for (int j = 0 ; j < numQuizzes ; j ++)
 				{
 					System.out.println(numQuizzes*i + j);
-					theString += "<td class=\"cell100 column2\">" + (String) output.get(numQuizzes*i + j).get(2) + "</td>\n";
+					theString += "<td class=\"cell100 column2\">" + Float.toString((float) output.get(numQuizzes*i + j).get(2)) + "</td>\n";
 				}
 				theString += "</tr>\n";
 			}

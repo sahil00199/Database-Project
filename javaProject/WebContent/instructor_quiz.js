@@ -154,7 +154,8 @@ $(document).ready(function() {
     document.getElementById("heading").innerHTML =  "Quiz";
     document.getElementById("content").innerHTML =
         "<p id = \"schedule\"></p>"+
-        "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AllSubmissions?qzid="+ qzid +"';\" >View all submissions</button><br><br>" +
+        "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AllSubmissions?qzid="+ qzid +"';\" >View all submissions</button>&nbsp&nbsp" +
+        "<button type=\"button\" class=\"btn-primary\" onclick=\"autograde()\" >Auto grade objective questions</button><br><br>"+
         "<div id = \"questions\"></div><br>"+
         "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AddQuizQuestion?qzid=" + qzid + "';\" >Add another Question</button>";
     schedule();
@@ -227,30 +228,7 @@ function removeQuestion(qid)
 	    	}
 	    }
 	});
-	document.getElementById("content").innerHTML =
-        "<div id = \"questions\"></div><br>";
-	document.getElementById("heading").innerHTML =  "Quiz";
-	document.getElementById("heading").innerHTML +=  "<p><a id=\"newQuestionQuiz\" href=\"AddQuizQuestion?qzid=" + qzid + "\"> Add Question</a></p>";
-	$.ajax({
-	    type: "GET",
-	    url: "InstructorQuizQuestions",
-	    data: {"qzid": qzid},
-	    success: function(data){
-	//    	console.log(data);
-	    	var data1 = (jQuery.parseJSON(data));
-	    	if(data1.status){
-	            questionList(
-	                data1.data,
-	                $('#questions'),
-	                qzid
-	            );
-	    	}
-	    	else{
-	    		window.location.replace("illegalAccess.html");
-	    		console.log(data1.message);
-	    	}
-	    }
-	}); 
+	questions();
 }
 
 function currTime()
@@ -292,5 +270,20 @@ function updateschedule(qzid)
 	document.location.reload() 
 }
 
-
+function autograde(){
+	$.ajax({
+        type: "GET",
+        url: "AutoCorrectObjective",
+        data: {"qzid": qzid},
+        success: function(data){
+        	var data1 = (jQuery.parseJSON(data));
+        	if(data1.status){
+	            alert("Successfully graded objective questions");
+        	}
+        	else{
+        		alert(data1.message);
+        	}
+        }
+    }); 
+}
 
