@@ -108,12 +108,13 @@ function questionList(result, list, qzid)
 
 $(document).ready(function() {
 //	document.title = "Course:"
-    document.getElementById("content").innerHTML =
+    document.getElementById("content").innerHTML ="<p id = \"schedule\"></p>"+
     	"<div id = \"max\"></div><br>"+"<div id = \"weightage\"></div><br>"+
             "<div id = \"questions\"></div><br>";
     document.getElementById("heading").innerHTML =  "Quiz";
 //    console.log("sdfsaf");
 //    console.log(qzid);
+    schedule();
     $.ajax({
         type: "GET",
         url: "StudentQuizQuestions",
@@ -245,3 +246,45 @@ function weightage(result, list)
 		list.html(str);
     }
 }
+
+function schedule(){
+	$('#schedule').html('Schedule');
+	$.ajax({
+        type: "GET",
+        url: "InstructorQuizTimings",
+        data: {"qzid": qzid},
+        success: function(data){
+//        	console.log(data);
+        	var data1 = (jQuery.parseJSON(data));
+        	if(data1.status){
+	            scheduler(
+	                data1.data,
+	                $('#schedule'),
+	                qzid
+	            );
+        	}
+        	else{
+        		window.location.replace("illegalAccess.html");
+        		console.log(data1.message);
+        	}
+        }
+    });   
+}
+
+
+function scheduler(result, list, qzid)
+{
+    // Remove current options
+    list.html('Schedule : <br>');
+    if(result != ''){
+    	$.each(result, function(k, v) {
+//    		console.log(v);
+			var s = "Start time:" + v.start + "<br>" + "Duration : "+ v.duration ;
+			list.append(s);
+		
+			
+        });
+    }
+}
+
+

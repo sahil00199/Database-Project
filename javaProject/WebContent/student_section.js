@@ -153,7 +153,7 @@ function coursetotal(result, list)
     // Remove current options
     list.html('');
     if(result != ''){
-    	var str = 'Course Total :';
+    	var str = '<b>Course Total :</b>';
 		$.each(result, function(k, v) {
 			str+= v.s + "<br>";
         });

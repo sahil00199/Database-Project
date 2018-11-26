@@ -145,7 +145,7 @@ insert into takes values('s1', 4);
 
 insert into quiz(qzName, secID, start, duration,weightage) values('Quiz 1', 1, '2018-09-22 19:10:25', '1:00:00', 0.1);
 insert into quiz(qzName, secID, start, duration,weightage) values('Midsem', 1, '2018-10-22 09:00:00', '3:00:00',0.3);
-insert into quiz(qzName, secID, start, duration,weightage) values('Quiz 2', 1, '2018-11-27 09:00:00', '9:30:00', 0.1);
+insert into quiz(qzName, secID, start, duration,weightage) values('Quiz 2', 1, '2018-11-26 23:00:00', '12:30:00', 0.1);
 insert into quiz(qzName, secID, start, duration,weightage) values('Endsem', 1, '2018-12-22 09:00:00', '3:00:00',0.4);
 insert into quiz(qzName, secID, start, duration,weightage) values('Quiz 1', 2, '2018-09-22 19:10:25', '3 4:05:06', 0.25);
 insert into quiz(qzName, secID, start, duration,weightage) values('Quiz 2', 2, '2018-09-25 09:00:00', '0:30:00', 0.25);
