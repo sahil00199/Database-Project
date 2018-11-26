@@ -48,8 +48,10 @@ function getResponse(qNum, isObjective){
         			console.log(ans);
         			document.getElementById(""+qNum).innerHTML = ans;
         		}
-        		if(marks != 'null' || marks < 0)
+        		if(marks != 'null' && marks != "-1.0"){
+        			console.log(marks);
         			document.getElementById("marks"+qNum).value = marks;
+        		}
         	}
         	else{
         		console.log(data1.message);
