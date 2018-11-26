@@ -239,7 +239,8 @@ function weightage(result, list)
     if(result != ''){
     	var str = 'Weighatge:';
 		$.each(result, function(k, v) {
-			str+= v.weightage + "%<br>";
+			var w = v.weightage*100;
+			str+= w + "%<br>";
         });
 		list.html(str);
     }

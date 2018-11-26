@@ -38,10 +38,10 @@ public class QuizWeightage extends HttpServlet {
 			return;
 		}
 		String query =  //TODO: verify query
-				"select weightage*100 from quiz where qzid = ? ";
+				"select weightage from quiz where qzid = ? ";
 		String res = DbHelper.executeQueryJson(query, 
 				new DbHelper.ParamType[] {
-						DbHelper.ParamType.INT,
+						DbHelper.ParamType.INT
 						}, 
 				new Object[] {qzid});
 		
