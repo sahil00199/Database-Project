@@ -51,14 +51,12 @@ public class PutResponse extends HttpServlet {
 			return;
 		}
 		int qz_int = Integer.parseInt(qzid);
-		String query_check = "select * from quiz where qzid =? and start <= cast(? as timestamp) and cast(? as timestamp) <= ("
+		String query_check = "select * from quiz where qzid =? and start <= now() and now() <= ("
 				+ "start + duration) ";
 		List<List<Object>> res_check = DbHelper.executeQueryList(query_check, 
 				new DbHelper.ParamType[] { 
-						DbHelper.ParamType.INT,
-						DbHelper.ParamType.STRING,
-						DbHelper.ParamType.STRING}, 
-				new Object[] {qzid, time, time});
+						DbHelper.ParamType.INT}, 
+				new Object[] {qzid});
 		if(res_check.isEmpty())
 		{
 			response.getWriter().print("{\"status\": false, \"message\": \"You cannot modify a response outside quiz timings\"}");
