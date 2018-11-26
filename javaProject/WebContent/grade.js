@@ -32,7 +32,7 @@ function getResponse(){
         data: {"qzid": qzid, "qid": qid, "i": iter},
         success: function(data){
         	var data1 = (jQuery.parseJSON(data));
-        	if(data1.status){
+        	if(data1.status && data1.data.length){
         	    var ans = "";
         	    var marks = null;
         		$.each(data1.data, function(k, v) {
@@ -58,11 +58,14 @@ function getResponse(){
             		}
         		}
         		else{
-        			console.log(ans);
         			document.getElementById(""+qNum).innerHTML = ans;
         		}
         		if(marks != 'null')
         			document.getElementById("marks"+qNum).value = marks;
+        	}
+        	else if(data1.status && data1.data.length == 0){
+        		iter = iter-1;
+        		alert("You have graded all submissions");
         	}
         	else{
         		console.log(data1.message);
@@ -87,7 +90,7 @@ function optionList(result, qlist, ans)
     		$.each(result, function(k, v) {
     			str+="<input type=\"checkbox\" name=\"ops\" id ="+ qNum + "o"+ k +" >"+ v.opt + "<br>" ;
             });
-//    		str+="<form> <button type=\"button\" onclick=\"putResponse("+qNum+", "+ isObjective+ ")\" > Save answer</button> </form><br>";
+//    		str+="<form> <button type=\"button\" class='btn-primary' onclick=\"putResponse("+qNum+", "+ isObjective+ ")\" > Save answer</button> </form><br>";
     		qlist.html(str);
     		
     	}
@@ -114,7 +117,7 @@ function questionList(result, list, qzid)
 			questions[k] = v.qid;
 			list.append(answer);
 			var marks = "Marks: <input type=\"text\" size=\"4\" name=\"marks\" id=\"marks" + k + "\">";
-			marks+="<button type=\"button\" onclick=\"updateMarks()\" >Update</button>";
+			marks+="<button type=\"button\" class='btn-primary' onclick=\"updateMarks()\" >Update</button>";
 			list.append(marks);
     		$.ajax({
 		        type: "GET",
@@ -146,8 +149,8 @@ $(document).ready(function() {
     document.getElementById("content").innerHTML =
             "<h2 id= \"student\"></h2><br>"+
             "<div id = \"questions\"></div><br>"+
-            "<button type=\"button\" onclick=\"previous()\" >Previous</button>"+
-            "<button type=\"button\" onclick=\"next()\" >Next</button><br>";
+            "<button type=\"button\" class='btn-primary' onclick=\"previous()\" >Previous</button>"+
+            "<button type=\"button\" class='btn-primary' onclick=\"next()\" >Next</button><br>";
     document.getElementById("heading").innerHTML =  "Grade Question";
     iter = 0;
     $.ajax({

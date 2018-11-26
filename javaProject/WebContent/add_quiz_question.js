@@ -56,9 +56,19 @@ $(document).ready(function() {
     " <button class=\"btn-primary\" onclick=\"loadQuestions()\"> Filter </button><br><br>" +
     "<br><br>";
     
-    
-	var tableHTML = "<table id=\"quesTable\" cellspacing=5> " + tableStr + " </table>";
-	
+    var tableHTML = "<div class=\"limiter\">\n" + 
+	"		<div class=\"container-table100\">\n" + 
+	"			<div class=\"wrap-table100\">\n" + 
+	"				<div class=\"table100 ver1 m-b-110\">\n" + 
+	"					<div class=\"table100-head\">";
+	tableHTML += "<table> <thead><tr class=\"row100 head\">\n <th class=\"cell100 column1\">Questions</th></tr></thead></table></div>\n";// + tableStr + " </table>";
+	tableHTML += "<div class=\"table100-body js-pscroll\">\n" + 
+					"						<table  id = \"quesTable1\">\n" + 
+					"							<tbody id = \"quesTable\">" + "</tbody>\n" + 
+					"						</table>\n" + 
+					"					</div>\n" + 
+					"				</div></div></div>";
+	console.log(tableHTML)
 	document.getElementById("content").innerHTML =
         currentHTML+tableHTML;
     $("#tttopic").autocomplete({
@@ -99,12 +109,15 @@ function fillTable(mydata){
 	for (var i = 0; i < mydata.length; i++){
 		var prText = mydata[i]["label"];
 		var prId = mydata[i]["value"];
-		var strToAdd = "<tr onclick=fillThis(\"" + prId + "\") >";
+		var strToAdd = "<tr  class=\"row100 body\" onclick=fillThis('" + prId + "') >";
 //		console.log(strToAdd);
-		strToAdd += "<td> " + prText + "</td>";	
+		strToAdd += "<td  class=\"cell100 column1\"> " + prText + "</td>";	
 		strToAdd += "</tr>";
 		mytable.innerHTML += strToAdd;
 	}
+
+	console.log(mytable.innerHTML);
+	console.log(document.getElementById("quesTable1").innerHTML);
 }
 
 function loadQuestions(){
