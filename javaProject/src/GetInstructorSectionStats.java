@@ -41,6 +41,7 @@ public class GetInstructorSectionStats extends HttpServlet {
 			response.sendRedirect("illegalAccess.html");
 		}
 		String secid = (String) request.getParameter("secid");
+		System.out.println(secid);
 		String query  = "select sid, qzname, sum(marksobtained) from (select sid, qzname, (case when "
 				+ "marksobtained = -1 or marksobtained is null then 0 else marksobtained end) from "
 				+ "(select takes.sid, quiz.qzname from takes, quiz where takes.secid = ? and "
@@ -53,8 +54,9 @@ public class GetInstructorSectionStats extends HttpServlet {
 		List<List<Object>> metaData = DbHelper.executeQueryList(metaQuery, new DbHelper.ParamType[] 
 				{DbHelper.ParamType.INT}, new String[] {secid});
 		
+		int numQuizzes = metaData.size();
 		
-		
+		System.out.println(");)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))0");
 		String theString = "";
 		
 		theString += "<div class=\"limiter\">\n" + 
@@ -76,22 +78,25 @@ public class GetInstructorSectionStats extends HttpServlet {
 			theString += "<div class=\"table100-body js-pscroll\">\n" + 
 					"						<table>\n" + 
 					"							<tbody>";
-//			for (int i = 0 ; i < topics.size() ; i ++)
-//			{
-//				theString += "<tr class=\"row100 body\">\n";
-//				theString += "<td class=\"cell100 column1\">" + topics.get(i) + "</td>\n";
-//				theString += "<td class=\"cell100 column2\">" + maxMarks.get(topics.get(i)) + "</td>\n";
-//				theString += "<td class=\"cell100 column3\">" + marksObtained.get(topics.get(i)) + "</td>\n";
-//				theString += "</tr>\n";
-//			}
-		theString += "</tbody>\n" + 
+			for (int i = 0 ; i < output.size() / numQuizzes ; i ++)
+			{
+				theString += "<tr class=\"row100 body\">\n";
+				theString += "<td class=\"cell100 column1\">" + (String) output.get(numQuizzes*i).get(2) + "</td>\n";
+				for (int j = 0 ; j < numQuizzes ; j ++)
+				{
+					System.out.println(numQuizzes*i + j);
+					theString += "<td class=\"cell100 column2\">" + (String) output.get(numQuizzes*i + j).get(2) + "</td>\n";
+				}
+				theString += "</tr>\n";
+			}
+			theString += "</tbody>\n" + 
 				"						</table>\n" + 
 				"					</div>\n" + 
 				"				</div></div></div>";
 
 		
 		
-		System.out.println(theString);
+		//System.out.println(theString);
 		PrintWriter out = response.getWriter();
 		out.print(theString);
 	}
