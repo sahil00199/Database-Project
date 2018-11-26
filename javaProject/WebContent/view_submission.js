@@ -101,7 +101,7 @@ function questionList(result, list, qzid)
 			questions[k] = v.qid;
 			list.append(answer);
 			var marks = "Marks: <input type=\"text\" size=\"4\" name=\"marks\" id=\"marks" + k + "\">";
-			marks+="<button type=\"button\" onclick=\"updateMarks("+ k +")\" >Update</button>";
+			marks+="<button type=\"button\" class=\"btn-primary\" onclick=\"updateMarks("+ k +")\" >Update</button>";
 			list.append(marks);
 			list.append("<div class='separator2'></div>")
     		$.ajax({

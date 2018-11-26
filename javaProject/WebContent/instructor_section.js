@@ -71,7 +71,7 @@ $(document).ready(function() {
 });
 
 function showGrades(){
-	window.location.replace("ShowAllGrades?secid="+secid);
+	window.location.replace("InstructorStats?secid="+secid);
 }
 
 function showCreateQuiz()
