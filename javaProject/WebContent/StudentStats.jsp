@@ -5,6 +5,18 @@
 <html>
 
 <head>
+	<link rel="stylesheet" type="text/css" href="assets/Table_Fixed_Header/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/Table_Fixed_Header/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/Table_Fixed_Header/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/Table_Fixed_Header/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/Table_Fixed_Header/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/Table_Fixed_Header/css/util.css">
+	<link rel="stylesheet" type="text/css" href="assets/Table_Fixed_Header/css/main.css">
 	<link rel="stylesheet" href="jquery-ui.css" />    
     <link rel="stylesheet" href="jquery.dataTables.min.css"/>	 
 	<script src="jquery-3.3.1.js"> </script><!-- Latest compiled and minified CSS -->
@@ -27,7 +39,6 @@
     <link rel="stylesheet" href="assets/css/stylesheet.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
 
     <!--For Plugins external css-->
     <link rel="stylesheet" href="assets/css/plugins.css" />

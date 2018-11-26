@@ -95,10 +95,10 @@ public class GetStudentStats extends HttpServlet {
 			}
 		}
 		theString += "<table>\n";
-			theString += "<tr>\n";
-				theString += "<th></th>\n";
-				theString += "<th>Total Marks</th>\n";
-				theString += "<th>Marks Obtained</th>\n";
+			theString += "<tr class=\"row100 head\">\n";
+				theString += "<th class=\"cell100 column1\"></th>\n";
+				theString += "<th class=\"cell100 column2\">Total Marks</th>\n";
+				theString += "<th class=\"cell100 column3\">Marks Obtained</th>\n";
 			theString += "</tr>\n";
 			theString += "<tr>\n";
 				theString += "<td> Objective </td>\n";
