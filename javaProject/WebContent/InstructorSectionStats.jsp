@@ -1,10 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
 <html>
 
 <head>
- 	<link rel="stylesheet" href="jquery-ui.css" />    
+	<link rel="stylesheet" href="jquery-ui.css" />    
     <link rel="stylesheet" href="jquery.dataTables.min.css"/>	 
 	<script src="jquery-3.3.1.js"> </script><!-- Latest compiled and minified CSS -->
-    <script src="instructor_home.js"></script>
+    <script> var secid = <%= request.getSession().getAttribute("id") %> </script>
+ 	<script src="instructor_section_stats.js"></script>
 	
     <script src="jquery.dataTables.min.js"></script>    
     <script src="jquery-ui.min.js"></script>   
@@ -53,7 +58,7 @@
                                             <span class="icon-bar"></span>
                                         </button> -->
                                         <button type="button" onClick=goBack() class="btn">
-                                            Change Role
+                                            Home
                                         </button>
                                         
                                     </div>
@@ -92,15 +97,11 @@
                     <div class="col-sm-12">
                         <div class="main_contact sections">
                             <div class="head_title text-center">
-                                <h1>Instructor Home</h1>
+                                <h1 id="heading" >Instructor Section</h1>
                             </div>
 
-                            <br><br><div id="content">	 </div> 
-	<a href = "CreateQuestion"> Add a new question </a>
-	<br><br>
-	<a href = "InstructorDB"> View all questions </a>
-	<br><br>
-	
+                            <div id="content"> </div>
+                            
 
                             
                     </div>
