@@ -43,7 +43,7 @@ function validateForm(){
 </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Quiz</title>
+    <title>Login</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -97,8 +97,8 @@ function validateForm(){
                                     <!-- Collect the nav links, forms, and other content for toggling -->
 
                                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                        <ul class="nav navbar-nav navbar-left">
-                                            <button type="button" class="btn" align="right" onClick="window.location.replace('signup.html')">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <button type="button" class="btn" align="right" onClick="location.href='signup.html';">
                                             	Sign Up
                                         	</button>
                                         
@@ -122,21 +122,19 @@ function validateForm(){
                     <div class="col-sm-12">
                         <div class="main_contact sections">
                             <div class="head_title text-center">
-                                <h1 id="heading">Login</h1>
+                                <h1 id="heading" >Login</h1>
                             </div>
 
-                            <form>
-		<p id="error" style="color:red"></p>
-		ID<br> <input type="text" name="id" id="id" maxlength="50" required> <br><br>
-		Password<br> <input type="password" name="password" id="password" maxlength="50" required> <br><br>
-		<!-- <input type="radio" name="role" value="student" checked> Student <br>
-		<input type="radio" name="role" value="instructor"> Instructor <br>
-		<input type="radio" name="role" value="TA"> Teaching assistant <br> <br> -->
-		<button type="button" onclick="validateForm()" class="btn">Login</button>
-	</form>
-	<br><br>
-	<!-- <a href = "signup.html"> Sign up</a> -->
-
+                            <form style="margin: 0 auto; width:250px">
+								<p id="error" style="color:red"></p>
+								ID<br> <input type="text" name="id" id="id" maxlength="50" required> <br><br>
+								Password<br> <input type="password" name="password" id="password" maxlength="50" required> <br><br>
+								<!-- <input type="radio" name="role" value="student" checked> Student <br>
+								<input type="radio" name="role" value="instructor"> Instructor <br>
+								<input type="radio" name="role" value="TA"> Teaching assistant <br> <br> -->
+								<button type="button" onclick="validateForm()" class="btn">Login</button>
+							</form>
+							<br><br>
                     </div>
                 </div><!-- End of row -->
             </div><!-- End of container -->

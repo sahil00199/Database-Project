@@ -18,7 +18,7 @@ function goBack(){
 }
 $(document).ready(function() {
     document.getElementById("content").innerHTML =
-    	"<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='InstructorDB';\">View Question Database</button><br><br>" +
+    	"<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='InstructorDB';\">  View Question Database </button><br><br>" +
         "<h4>Your Sections :</h4>"+
         "<div id = \"contentList\"> </div><br>"+
         "<button type=\"button\" class=\"btn-primary\" onclick=\"displayCreateSection()\">Create Section</button><br>"+
