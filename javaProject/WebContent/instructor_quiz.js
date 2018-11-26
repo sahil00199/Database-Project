@@ -312,8 +312,8 @@ function updateschedule(qzid)
 {
 	var starttime = document.getElementById('sttime').value;
 	var duration = document.getElementById('dur').value;
-	console.log(starttime);
-	console.log(duration);
+//	console.log(starttime);
+//	console.log(duration);
 	$.ajax({
         type: "GET",
         url: "InstructorUpdateQuizTimings",
@@ -323,6 +323,7 @@ function updateschedule(qzid)
         	var data1 = (jQuery.parseJSON(data));
         	if(data1.status){
 	            alert("Successful");
+	            document.location.reload(); 
         	}
         	else{
         		alert(data1.message);
@@ -330,7 +331,7 @@ function updateschedule(qzid)
         	}
         }
     }); 
-	document.location.reload(); 
+	
 }
 
 function autograde(){

@@ -50,7 +50,7 @@
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                         </button> -->
-                                        <button type="button" onClick="window.location.href('InstructorHome')" class="btn">
+                                        <button type="button" onClick="window.location.replace('InstructorHome')" class="btn">
                                             Home
                                         </button>
                                         
