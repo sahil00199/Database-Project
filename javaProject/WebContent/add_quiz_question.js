@@ -51,8 +51,10 @@ function addTheQues(myqid){
 $(document).ready(function() {
 	var currentHTML =
 		"<p id=\"error\" style=\"color:red\"></p>"+
-	" Enter the topic: <input type=\"text\" id = \"tttopic\" name=\"tttopic\" onchange=loadQuestions()><br>"+
-    " Enter the maximum marks: <input type=\"text\" id = \"mmarks\" name=\"mmarks\"><br><br>";
+	" Enter the topic: <input type=\"text\" id = \"tttopic\" name=\"tttopic\"><br>"+
+    " Enter the maximum marks: <input type=\"text\" id = \"mmarks\" name=\"mmarks\"><br>" +
+    " <button class=\"btn-primary\" onclick=\"loadQuestions()\"> Filter </button><br><br>" +
+    "<br><br>";
     
     
 	var tableHTML = "<table id=\"quesTable\" cellspacing=5> " + tableStr + " </table>";

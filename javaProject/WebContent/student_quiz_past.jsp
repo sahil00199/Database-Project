@@ -1,22 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="jquery-ui.css" />    
+ 	<link rel="stylesheet" href="jquery-ui.css" />    
     <link rel="stylesheet" href="jquery.dataTables.min.css"/>	 
 	<script src="jquery-3.3.1.js"> </script><!-- Latest compiled and minified CSS -->
-    <script> var secid = <%= request.getParameter("secid") %> </script>
- 	<script src="student_section.js"></script>
-	
+	<script>var qzid = <%= request.getParameter("qzid") %>; </script>
+    <script src="student_quiz_past.js"></script>
     <script src="jquery.dataTables.min.js"></script>    
     <script src="jquery-ui.min.js"></script>   
     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Instructor Home</title>
+    <title>Quiz</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -57,7 +51,7 @@
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                         </button> -->
-                                        <button type="button" onClick=goBack() class="btn">
+                                        <button type="button" onClick="window.location.replace('InstructorHome')" class="btn">
                                             Home
                                         </button>
                                         
@@ -87,7 +81,6 @@
         </header> <!--End of header -->
 <!--     <div class='preloader'><div class='loaded'>&nbsp;</div></div>
  -->    
-    
 
 
         <!-- Contact Section -->
@@ -97,13 +90,12 @@
                     <div class="col-sm-12">
                         <div class="main_contact sections">
                             <div class="head_title text-center">
-                                <h1 id="heading" >Instructor Section</h1>
+                                <h1 id="heading">Add Question</h1>
                             </div>
-							<p id="error" style="color:red"></p>
-                            <div id="content"> </div>
-                            
+							<p id="errored" style="color:red"></p>
+                            <div id="content">
+                            </div> 
 
-                            
                     </div>
                 </div><!-- End of row -->
             </div><!-- End of container -->
@@ -159,7 +151,6 @@
             lat: -12.043333,
             lng: -77.028333
         });
-
     </script>
      --><script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
