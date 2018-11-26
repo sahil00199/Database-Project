@@ -1,18 +1,19 @@
+
 <html>
 
 <head>
 	<link rel="stylesheet" href="jquery-ui.css" />    
     <link rel="stylesheet" href="jquery.dataTables.min.css"/>	 
 	<script src="jquery-3.3.1.js"> </script><!-- Latest compiled and minified CSS -->
-    <script> var secid = <%= request.getParameter("secid") %> </script>
- 	<script src="instructor_section.js"></script>
+    <script> var qzid = <%= request.getParameter("qzid") %> </script>
+ 	<script src="all_submissions.js"></script>
 	
     <script src="jquery.dataTables.min.js"></script>    
     <script src="jquery-ui.min.js"></script>   
     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Instructor Home</title>
+    <title>Submissions</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -93,17 +94,11 @@
                     <div class="col-sm-12">
                         <div class="main_contact sections">
                             <div class="head_title text-center">
-                                <h1 id="heading" >Instructor Section</h1>
+                                <h1 id="heading" >All Submissions</h1>
                             </div>
 
                             <div id="content"> </div>
-                            <a id="linker" href="google.com"">Create Quiz</a><br>
-                            <div id="newConvo"></div>
-
-                            <div id="content"> </div>
-                            <a id="talinker" href="google.com"">Add a TA</a><br>
-                            <div id="tanewConvo"></div>
-	
+                            
 
                             
                     </div>
