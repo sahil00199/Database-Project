@@ -1,16 +1,16 @@
 var tableStr = "<th> QuestionText </th>";
 
 function resetError() {
-	document.getElementById("error").innerHTML = "";
+	document.getElementById("errored").innerHTML = "";
 }
 function setError(temp) {
-	document.getElementById("error").style.color = "red";
-	document.getElementById("error").innerHTML = temp;
+	document.getElementById("errored").style.color = "red";
+	document.getElementById("errored").innerHTML = temp;
 }
 
 function setPosError(temp){
-	document.getElementById("error").style.color = "green";
-	document.getElementById("error").innerHTML = temp;
+	document.getElementById("errored").style.color = "green";
+	document.getElementById("errored").innerHTML = temp;
 }
 
 function addTheQues(myqid){
