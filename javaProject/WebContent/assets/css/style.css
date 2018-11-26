@@ -322,22 +322,27 @@ Separator
 /*
 Button
 */
-.btn-primary.active.focus,
-.btn-primary.active:focus,
-.btn-primary.active:hover,
-.btn-primary:active.focus,
-.btn-primary:active:focus,
-.btn-primary:active:hover,
-.open > .dropdown-toggle.btn-primary.focus,
-.open > .dropdown-toggle.btn-primary:focus,
-.open > .dropdown-toggle.btn-primary:hover,
-.btn-primary.focus,
-.btn-primary:focus,
-.btn-primary.disabled,
-.btn-primary.disabled:hover {
-    color: #ffffff;
-    background-color: #522bac;
-    border-color: #522bac;
+.btn-primary{
+    display: inline-block;
+    min-width: 150px;
+    padding: 0.em;
+    height: 30px;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 1px;
+    margin: 0;
+    font-size: 0.9 rem;
+    border-radius: 25px;
+    margin-top: 10px;
+    background-color: #000;
+    transition: .5s; 
+    border:1px solid #000;
+}
+.btn-primary:hover {
+    background-color:#ffcb93;
+    color: #000;
+    text-decoration: none;
+    border:1px solid #ffcb93;
 }
 
 .btn {
