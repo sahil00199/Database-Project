@@ -3,15 +3,14 @@ function buildList(result, list)
     list.html('');
     if(result != ''){
     	$.each(result, function(k, v) {
-    		console.log(v);
-            list.append("<p> <a href = \"ViewSubmission?qzid=" + qzid + "&sid=" + v.sid + "\"> " + v.sid + " </a></p>");
+            list.append("<li> <h3><a href = \"ViewSubmission?qzid=" + qzid + "&sid=" + v.sid + "\"> " + v.sid + " </a></h3></li>");
         });
     }
 }
 
 $(document).ready(function() {
     document.getElementById("content").innerHTML =
-            "<div id = \"contentList\"></div><br>";
+            "<ol id = \"contentList\"></ol><br>";
     document.getElementById("heading").innerHTML =
         "All Submissions";
     $('#contentList').html('');
@@ -20,9 +19,7 @@ $(document).ready(function() {
         url: "StudentsEnrolled",
         data: {"qzid": qzid},
         success: function(data){
-//        	console.log(data);
         	var data1 = (jQuery.parseJSON(data));
-        	console.log(data1);
         	if(data1.status){
 	            buildList(
 	                data1.data,
@@ -31,7 +28,6 @@ $(document).ready(function() {
         	}
         	else{
         		window.location.replace("illegalAccess.html");
-        		console.log(data1.message);
         	}
         }
     });

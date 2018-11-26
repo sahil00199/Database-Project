@@ -40,7 +40,7 @@ function getResponse(){
         			ans = v.answer;
         			marks = v.marksobtained;
         		});
-        		document.getElementById("student").innerHTML = sid;
+        		document.getElementById("student").innerHTML = "Student ID : " + sid;
         		if(isobjective == 'true'){
         			for(var i=0;i<n;i++){
             			opts[qNum][i]=0;
