@@ -62,7 +62,17 @@ $(document).ready(function() {
     	e.preventDefault();
     	showTA();
     }  );
+    $("#allinker").click(function(e)
+    	    {
+//    	    	console.log("this");
+    	    	e.preventDefault();
+    	    	showGrades();
+    	    }  );
 });
+
+function showGrades(){
+	window.location.replace("ShowAllGrades?secid="+secid);
+}
 
 function showCreateQuiz()
 {

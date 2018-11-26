@@ -1,8 +1,6 @@
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,18 +9,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class QuizMaximumMarks
+ * Servlet implementation class GetInstructorSectionStats
  */
-@WebServlet("/QuizMaximumMarks")
-public class QuizMaximumMarks extends HttpServlet {
+@WebServlet("/GetInstructorSectionStats")
+public class GetInstructorSectionStats extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QuizMaximumMarks() {
+    public GetInstructorSectionStats() {
         super();
-        
         // TODO Auto-generated constructor stub
     }
 
@@ -30,25 +27,17 @@ public class QuizMaximumMarks extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		String ID = (String) session.getAttribute("id");
-		String  qzid = (String) request.getParameter("qzid");
-		if(qzid == null) {
-			response.getWriter().print("{\"status\": false, \"message\": \"Null value passed as request parameter\"}");
+		if (session.getAttribute("id") == null)//not logged in
+		{
+			response.sendRedirect("login.html");
 			return;
 		}
-		String query =  //TODO: verify query
-				"select (case when sum(maxmarks) is null then 0 else sum(maxmarks) end) as s from quizquestion where qzid = ? ";
-		String res = DbHelper.executeQueryJson(query, 
-				new DbHelper.ParamType[] {
-						DbHelper.ParamType.INT,
-						}, 
-				new Object[] {qzid});
-		
-		PrintWriter out = response.getWriter();
-		out.print(res);
-    	return;
+		if (!session.getAttribute("role").equals("instructor"))
+		{
+			response.sendRedirect("illegalAccess.html");
+		}
+		String secid = (String) request.getParameter("secid");
 	}
 
 	/**

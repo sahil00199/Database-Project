@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
-
     <!--For Plugins external css-->
     <link rel="stylesheet" href="assets/css/plugins.css" />
 
