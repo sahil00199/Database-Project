@@ -6,8 +6,9 @@
 $(document).ready(function() {
 //	document.title = "Course:"
 //	currTime()
-    document.getElementById("heading").innerHTML =  "Quiz schedule. Please note down the timings and be ready";
-    document.getElementById("content").innerHTML  = "<div id = \"weightage\"></div><br>"+"<p id = \"schedule\"></p><br>";
+	console.log("this");
+    document.getElementById("heading").innerHTML =  "Quiz";
+    document.getElementById("content").innerHTML  = "Please note down the timings and be ready.<br><div id = \"weightage\"></div><br>"+"<p id = \"schedule\"></p><br>";
     schedule();
     
     $.ajax({

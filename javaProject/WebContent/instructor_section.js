@@ -17,7 +17,7 @@ function goBack(){
 $(document).ready(function() {
 //	document.title = "Course:"
     document.getElementById("content").innerHTML =
-            "<div id = \"contentList\"></div><br>";
+            "<br>Quizzes:<br><div id = \"contentList\"></div><br>";
     document.getElementById("heading").innerHTML =
         "Section Details";
 //    document.getElementById("content").innerHTML +=
@@ -62,16 +62,56 @@ $(document).ready(function() {
     	e.preventDefault();
     	showTA();
     }  );
-    $("#allinker").click(function(e)
+//    $("#allinker").click(function(e)
+//    	    {
+////    	    	console.log("this");
+//    	    	e.preventDefault();
+//    	    	showGrades();
+//    }  );
+    $("#tolinker").click(function(e)
     	    {
 //    	    	console.log("this");
     	    	e.preventDefault();
-    	    	showGrades();
-    	    }  );
+    	    	showAddTopic();
+    }  );
 });
 
 function showGrades(){
 	location.href = "InstructorSectionStats?secid="+secid;
+}
+
+function showAddTopic(){
+	var currentHTML = "<form>" +
+    "Enter the topic: <input type=\"text\" id = \"toid\" name=\"toid\"><br>"+
+//    "<input type=\"text\" id = \"tapid\" name=\"tapid\" hidden><br>"+
+    "<button type=\"button\" class=\"btn-primary\" onclick=\"addTopic()\">Add</button>"+
+//    "value=\"Submit\" />"+
+    "</form>";
+    document.getElementById("tonewConvo").innerHTML = currentHTML;
+//    console.log("this");
+}
+
+function addTopic(){
+//	console.log("here");
+	var toadd = document.getElementById('toid').value;
+	var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+         if (this.readyState == 4 && this.status == 200){
+		    json_object = JSON.parse(this.responseText);
+//		    console.log("here1");
+//		    console.log(json_object);
+		    if(!(json_object.status)){
+		        alert(json_object.message);
+		    }
+		    else{
+		        alert("Topic added successfully!");
+		    }
+//		    loadQs();
+         }
+    }
+    xhttp.open("GET", "AddTopic?secid="+ secid +"&topic="+toadd, true);
+    xhttp.send();
 }
 
 function showCreateQuiz()
@@ -92,7 +132,7 @@ function showTA()
     var currentHTML = "<form>" +
     "Enter the ID or the name of the TA: <input type=\"text\" id = \"taid\" name=\"taid\">"+
     "<input type=\"text\" id = \"tapid\" name=\"tapid\" hidden><br>"+
-    "<button type=\"button\" class=\"btn-primary\" onclick=\"addTAQuiz()\">Submit</button>"+
+    "<button type=\"button\" class=\"btn-primary\" onclick=\"addTAQuiz()\">Add</button>"+
 //    "value=\"Submit\" />"+
     "</form>";
     document.getElementById("tanewConvo").innerHTML = currentHTML;

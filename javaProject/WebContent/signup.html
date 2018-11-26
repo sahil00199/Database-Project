@@ -37,7 +37,7 @@
                 else{
                     document.getElementById("error").innerHTML = "ID already taken. Please enter another ID";
                     document.getElementById("error").style.color = "red";
-                    console.log(response.message);
+                    /* console.log(response.message); */
                 }
                 
               }
@@ -134,8 +134,8 @@
                                 <h1 id="heading">Signup</h1>
                             </div>
 
-                            <p id="error" style="color:red"></p>
 						    <form style="margin: 0 auto; width:250px">
+	                            <p id="error" style="color:red"></p>
 						        ID<br> <input type="text" name="id" id="id" maxlength="50" required> <br><br>
 						        Name<br> <input type="text" name="name" id="name" maxlength="50" required> <br><br>
 						        Email<br> <input type="text" name="email" id="email" maxlength="50" required> <br><br>

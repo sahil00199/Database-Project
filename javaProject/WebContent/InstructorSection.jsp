@@ -97,7 +97,8 @@
                             </div>
 
 							<div id="content3"> </div>
-                            <a id="allinker" href="google.com">View Mark Sheet</a><br>
+                            <button class="btn-primary" onclick="showGrades()"> View Mark Sheet </button>
+                            <!-- <a id="allinker" href="google.com">View Mark Sheet</a><br> -->
                             <div id="alnewConvo"></div>
 
                             <div id="content"> </div>
@@ -107,6 +108,10 @@
                             <div id="content2"> </div>
                             <a id="talinker" href="google.com">Add TA</a><br>
                             <div id="tanewConvo"></div>
+                            
+                            <div id="content3"> </div>
+                            <a id="tolinker" href="google.com">Add Topic</a><br>
+                            <div id="tonewConvo"></div>
 	
 
                             

@@ -118,7 +118,7 @@ function questionList(result, list, qzid)
 //		                     console.log(document.getElementById("tttopic").value);
 		                 }
 		            }
-		            xhttp.open("GET", "AutoCompleteTa?partial="+request.term, true);
+		            xhttp.open("GET", "AutoCompleteSectionTa?partial="+request.term+"&qzid="+qzid, true);
 		            xhttp.send();
 		        },
 		        select: function (event, ui) {
@@ -210,7 +210,7 @@ function weightage(result, list)
     // Remove current options
     list.html('');
     if(result != ''){
-    	var str = '<b>Weighatge:</b>';
+    	var str = '<b>Weightage:</b>';
 		$.each(result, function(k, v) {
 			var w = v.weightage*100;
 			str+= w + "%<br>";
@@ -246,7 +246,7 @@ $(document).ready(function() {
         	}
         	else{
         		window.location.replace("illegalAccess.html");
-        		console.log(data1.message);
+//        		console.log(data1.message);
         	}
         }
     });

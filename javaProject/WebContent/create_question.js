@@ -176,7 +176,7 @@ function makeO() {
     '<input type="text" name="newop" id="newop" maxlength="1000" class="form-control">'+
     '<!-- <textarea class="form-control" name="message" rows="8"></textarea> -->'+
 '</div>'+
-'<button type="button" onclick="addOption()" class="btn"> Add Options</button></p>'+
+'<button type="button" onclick="addOption()" class="btn-primary"> Add Options</button></p>'+
 '<p id="options">Current Options:</p>;';
 //	document.getElementById("adding").innerHTML = 'Add a new option <br> <input type="text" name="newop" id="newop" maxlength="1000"> <br><br><button type="button" onclick="addOption()"> Add Option</button>';
 	document.getElementById("options").innerHTML = "Current Options:";

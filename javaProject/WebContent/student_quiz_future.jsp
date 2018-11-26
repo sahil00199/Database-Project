@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="jquery.dataTables.min.css"/>	 
 	<script src="jquery-3.3.1.js"> </script><!-- Latest compiled and minified CSS -->
 	<script>var qzid = <%= request.getParameter("qzid") %>; </script>
-    <script src="add_quiz_question.js"></script>
+    <script src="student_quiz_future.js"></script>
     <script src="jquery.dataTables.min.js"></script>    
     <script src="jquery-ui.min.js"></script>   
     

@@ -52,7 +52,7 @@
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                         </button> -->
-                                        <button type="button" onClick="window.location.href('InstructorHome')" class="btn">
+                                        <button type="button" onClick="location.href='TAHome'" class="btn">
                                             Home
                                         </button>
                                         

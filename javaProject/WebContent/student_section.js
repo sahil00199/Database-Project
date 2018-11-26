@@ -25,7 +25,7 @@ function buildList2(result, list)
 function buildList3(result, list)
 {
     // Remove current options
-    list.html('Future Quizzes :(. Check schedules');
+    list.html('Future Quizzes :( Check schedules');
     if(result != ''){
     	$.each(result, function(k, v) {
     		console.log(v);
