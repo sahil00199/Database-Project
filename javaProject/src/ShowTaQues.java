@@ -51,8 +51,8 @@ public class ShowTaQues extends HttpServlet {
 		String query2 = "select distinct taid as id, name from checked natural join ta where qid = ? and qzid = ?;";
 		String res1 = DbHelper.executeQueryJson(query2, 
 				new DbHelper.ParamType[] {
-						DbHelper.ParamType.STRING,
-						DbHelper.ParamType.STRING}, 
+						DbHelper.ParamType.INT,
+						DbHelper.ParamType.INT}, 
 				new Object[] {qid, qzid});
 //		System.out.println(secid);
 		PrintWriter out = response.getWriter();

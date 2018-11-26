@@ -352,6 +352,7 @@ function autograde(){
 
 function addta(qid)
 {
+	console.log("reached here");
 	var taid = document.getElementById('taid').value;
 	$.ajax({
         type: "GET",
@@ -359,6 +360,7 @@ function addta(qid)
         data: {"qzid": qzid, "qid" : qid, "taid" : taid },
         success: function(data){
         	var data1 = (jQuery.parseJSON(data));
+        	console.log(data1);
         	if(data1.status){
 	            alert("Successfully added TA");
         	}
@@ -373,16 +375,18 @@ function addta(qid)
 function taList(result, list)
 {
     // Remove current options
+	console.log(result);
+	console.log(list);
     list.html('');
     if(result != ''){
-    	var str = 'The following TAs have been alloted: <br>';
+    	var str = 'Alloted TAs: <br>';
 		$.each(result, function(k, v) {
-			str+= "ID:"+v.id +", Name:"+v.name+ "<br>";
+			str+= "ID : "+v.id +", Name : "+v.name+ "<br>";
         });
 		list.html(str);
     }
     else{
-    	var str = 'No TA has been alloted ye. <br>';
+    	var str = 'No TA has been alloted yet. <br>';
     	list.html(str);
     }
 }
