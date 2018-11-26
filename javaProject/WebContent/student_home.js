@@ -20,7 +20,7 @@ function goBack(){
 $(document).ready(function() {
     document.getElementById("content").innerHTML =
             "<div id = \"contentList\"></div><br>" + 
-            "<br><div><h3><a href=\"StudentStats\"> View Statistics </a></h3></div>";
+            "<div><h4><a href=\"StudentStats\"> View overall statistics </a></h4></div>";
 
     $.ajax({
         type: "GET",

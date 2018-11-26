@@ -72,6 +72,35 @@ function questionList(result, list, qzid)
 			list.append(answer);
 			var removeQuestion = "<form> <button type=\"button\" class=\"btn-primary\" onclick=\"removeQuestion("+v.qid+")\" > Remove Question</button> </form>";
 			list.append(removeQuestion);
+			var viewta = "<p id = ta" + v.qid + "</p>";
+			list.append(viewta);
+			
+			$.ajax({
+		        type: "GET",
+		        url: "ShowTaQues",
+		        data: {"qzid": qzid, "qid": v.qid},
+		        success: function(data){
+		        	var data1 = (jQuery.parseJSON(data));
+		        	if(data1.status){
+			            taList(
+			                data1.data,
+			                $('#ta' + v.qid)
+			            );
+		        	}
+		        	else{
+		        		alert(data1.message);
+		        		window.location.replace("illegalAccess.html");
+		        	}
+		        }
+		    });
+			
+			
+			
+			var taAssign = "<p id = ta" + v.qid + "><form>" +
+			" Enter TA id: <input type=\"text\" id = \"taid\" name=\"taid\">" +
+			" <button type=\"button\" class=\"btn-primary\" onclick=\"addta("+v.qid+")\" >" +
+			" Assign TA</button> </form> </p>";
+	list.append(taAssign);
 			list.append("<div class='separator2'></div><br>");
     		$.ajax({
 		        type: "GET",
@@ -93,6 +122,7 @@ function questionList(result, list, qzid)
 		        	}
 		        }
 		    }); 
+    		
         });
     }
 }
@@ -106,8 +136,7 @@ function scheduler(result, list, qzid)
 //    		console.log(v);
 			var s = "Start time : " + v.start + "<br>" + "Duration : "+ v.duration + "<br><br>" ;
 			list.append(s);
-			var updateSchedule = "<form> " +
-			 "<p id=\"max\"> </p>" +
+			var updateSchedule = "<p id=\"max\"> </p>" +"<form> " +
 			 " Enter start time: <input type=\"text\" id = \"sttime\" name=\"sttime\" placeholder=\"YYYY-MM-DD HH:MM:SS\"><br>"+
 			 " Enter duration: <input type=\"text\" id = \"dur\" name=\"dur\" placeholder=\"days HH:MM:SS\"><br>"+
 			 "<button type=\"button\" class=\"btn-primary\" onclick=\"updateschedule("+qzid+")\" > Update Schedule</button> </form>";
@@ -172,7 +201,7 @@ $(document).ready(function() {
         "<button type=\"button\" class=\"btn-primary\" onclick=\"autograde()\" >Auto grade objective questions</button><br><br>"+
         "<div id = \"weightage\"></div><br>"+
 	"<div id = \"questions\"></div><br>"+
-        "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AddQuizQuestion?qzid=" + qzid + "';\" >Add another Question</button>";
+        "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AddQuizQuestion?qzid=" + qzid + "';\" > + Add Question</button>";
     schedule();
     questions();
     $.ajax({
@@ -301,7 +330,7 @@ function updateschedule(qzid)
         	}
         }
     }); 
-	document.location.reload() 
+	document.location.reload(); 
 }
 
 function autograde(){
@@ -320,4 +349,42 @@ function autograde(){
         }
     }); 
 }
+
+function addta(qid)
+{
+	var taid = document.getElementById('taid').value;
+	$.ajax({
+        type: "GET",
+        url: "AssignTaQues",
+        data: {"qzid": qzid, "qid" : qid, "taid" : taid },
+        success: function(data){
+        	var data1 = (jQuery.parseJSON(data));
+        	if(data1.status){
+	            alert("Successfully added TA");
+        	}
+        	else{
+        		alert(data1.message);
+        	}
+        }
+    });
+	document.location.reload();
+	}
+
+function taList(result, list)
+{
+    // Remove current options
+    list.html('');
+    if(result != ''){
+    	var str = 'The following TAs have been alloted: <br>';
+		$.each(result, function(k, v) {
+			str+= "ID:"+v.id +", Name:"+v.name+ "<br>";
+        });
+		list.html(str);
+    }
+    else{
+    	var str = 'No TA has been alloted ye. <br>';
+    	list.html(str);
+    }
+}
+
 
