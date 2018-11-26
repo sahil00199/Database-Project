@@ -153,7 +153,7 @@ function coursetotal(result, list)
     // Remove current options
     list.html('');
     if(result != ''){
-    	var str = 'Total marks in all checked questions, including weightage :';
+    	var str = 'Course Total :';
 		$.each(result, function(k, v) {
 			str+= v.s + "<br>";
         });

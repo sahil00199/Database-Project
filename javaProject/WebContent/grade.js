@@ -60,7 +60,7 @@ function getResponse(){
         		else{
         			document.getElementById(""+qNum).innerHTML = ans;
         		}
-        		if(marks != 'null')
+        		if(marks != 'null' || marks < 0)
         			document.getElementById("marks"+qNum).value = marks;
         	}
         	else if(data1.status && data1.data.length == 0){

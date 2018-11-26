@@ -25,9 +25,9 @@ $(document).ready(function() {
 //	        "<input class=\"button\" name=\"submit\" type=\"submit\" value=\"Submit\" />"+
 //	        "</form>"+
 //            "<div id = \"contentList\"></div><br>";
-    console.log($("#newtop").autocomplete);
-    console.log(document.getElementById('newtop'));
-    console.log(document.getElementById('newtop').innerHTML);
+//    console.log($("#newtop").autocomplete);
+//    console.log(document.getElementById('newtop'));
+//    console.log(document.getElementById('newtop').innerHTML);
 	$("#newtop").autocomplete({
         source : function(request,response){
             var xhttp;
@@ -60,7 +60,7 @@ function setError(temp) {
 	document.getElementById("errored").innerHTML = temp;
 }
 function validateForm(){
-	console.log("there is nothgin");
+	console.log("there is nothing");
 	var max_limit_ques = 2000;
 	var max_limit_ops = 1000;
 	var ques = document.getElementById("question").value;

@@ -246,7 +246,7 @@ function MaxMarks(result, list)
     // Remove current options
     list.html('');
     if(result != ''){
-    	var str = 'Maximum marks:';
+    	var str = '<b>Maximum marks:</b>';
 		$.each(result, function(k, v) {
 			if(v.s != null){
 				str+= v.s + "<br>";
@@ -366,7 +366,7 @@ function quizmarksObtained(result,list)
 	else{
 		str+='Question not attempted. Hence 0 marks';
 	}
-	str +='Kindly refer to each question for details';
+	str +='<b>Kindly refer to each question for details</b>';
 	list.html(str);
 	}
 
@@ -376,7 +376,7 @@ function weightage(result, list)
     // Remove current options
     list.html('');
     if(result != ''){
-    	var str = 'Weighatge: ';
+    	var str = '<b>Weightage:</b>';
 		$.each(result, function(k, v) {
 			var w = v.weightage*100;
 			str+= w + "%<br>";

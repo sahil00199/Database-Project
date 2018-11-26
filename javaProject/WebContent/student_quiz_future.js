@@ -60,11 +60,11 @@ function schedule(){
 function scheduler(result, list, qzid)
 {
     // Remove current options
-    list.html('Schedule : <br>');
+    list.html('<b>Schedule :</b> <br>');
     if(result != ''){
     	$.each(result, function(k, v) {
 //    		console.log(v);
-			var s = "Start time:" + v.start + "<br>" + "Duration : "+ v.duration ;
+			var s = "<b>Start time:</b>" + v.start + "<br>" + "<b>Duration :</b> "+ v.duration ;
 			list.append(s);
 		
 			
@@ -77,7 +77,7 @@ function weightage(result, list)
     // Remove current options
     list.html('');
     if(result != ''){
-    	var str = 'Weighatge:';
+    	var str = '<b>Weighatge:</b>';
 		$.each(result, function(k, v) {
 			var w = v.weightage*100;
 			str+= w + "%<br>";

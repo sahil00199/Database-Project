@@ -130,22 +130,23 @@
 
                                                 <div class="form-group">
                                                     <label>Question</label>
-                                                    <input type="text"  name="question" id="question" class="form-control" required="">
+                                                    <input type="text"  name="question" id="question">
                                                 </div>
+                                                <input type="radio" name="role" value="objective" onclick="makeO()" checked> Objective <br>
+                                                <input type="radio" name="role" value="subjective" onclick="makeS()"> Subjective <br>
         
                                                 <p id="currtopics">Current Topics:</p>
 
                                                 <div class="form-group" id="addingTopics">
                                                     <label>Add a new topic</label>
-                                                    <input type="text" class="form-control" name="newtop" id="newtop" onchange=addTopic()>
+                                                    <input type="text" name="newtop" id="newtop"><br>
+                                                    <button class="btn-primary" onclick="addTopic()">Add the topic</button>
                                                 </div>
 
-                                                <input type="radio" name="role" value="objective" onclick="makeO()" checked> Objective <br>
-                                                <input type="radio" name="role" value="subjective" onclick="makeS()"> Subjective <br>
 												<div id="mainarea">
 	                                                <div class="form-group">
 	                                                    <label id="adding">Add a new option</label>
-	                                                    <input type="text" name="newop" id="newop" maxlength="1000" class="form-control">
+	                                                    <input type="text" name="newop" id="newop" maxlength="1000">
 	                                                    <!-- <textarea class="form-control" name="message" rows="8"></textarea> -->
 	                                                </div>
 													<button type="button" onclick="addOption()" class="btn"> Add Options</button></p>

@@ -42,11 +42,12 @@ public class GetInstructorSectionStats extends HttpServlet {
 		}
 		String secid = (String) request.getParameter("secid");
 		System.out.println(secid);
-		String query  = "select sid, qzname, sum(marksobtained) from (select sid, qzname, (case when "
-				+ "marksobtained = -1 or marksobtained is null then 0 else marksobtained end) from "
-				+ "(select takes.sid, quiz.qzname from takes, quiz where takes.secid = ? and "
-				+ "quiz.secid = ?) as foo natural left outer join response) as bar group by "
-				+ "qzname, sid order by sid, qzname asc;";
+		String query  = "select sid, qzname, sum(marksobtained) \n" + 
+				"from (select sid, qzname, (case when marksobtained = -1 or marksobtained is null \n" + 
+				"then 0 else marksobtained end) \n" + 
+				"from (select takes.sid, quiz.qzname, quiz.qzid from takes, quiz \n" + 
+				"where takes.secid = ? and quiz.secid = ?) as foo natural left outer join response)\n" + 
+				"as bar group by qzname, sid order by sid, qzname asc;";
 		List<List<Object>> output = DbHelper.executeQueryList(query, new DbHelper.ParamType[] 
 				{DbHelper.ParamType.INT,DbHelper.ParamType.INT }, new String[] {secid, secid});
 		

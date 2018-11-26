@@ -57,16 +57,16 @@ public class CreateQuiz extends HttpServlet {
 		String  qzname = (String) request.getParameter("coursen");
 		String starttime = (String)request.getParameter("starttime");
         String duration = (String)request.getParameter("duration");
-		String maxmarks = (String)request.getParameter("maxmarks");
+//		String maxmarks = (String)request.getParameter("maxmarks");
 		String weightage = (String)request.getParameter("weightage");
 		String secid = (String) request.getParameter("secid");
-		if(qzname == null || starttime == null || duration == null || maxmarks == null || weightage == null || secid  == null) {
+		if(qzname == null || starttime == null || duration == null || weightage == null || secid  == null) {
 			response.getWriter().print("{\"status\": false, \"message\": \"Null value passed as request parameter\"}");
 			return;
 		}
 //		System.out.println("reached here");
 		String query =  //TODO: verify query
-				"insert into quiz(qzname, secid, start,  duration) values (?, ?, CAST(? AS TIMESTAMP),  CAST(? AS INTERVAL), ?)";
+				"insert into quiz(qzname, secid, start,  duration, weightage) values (?, ?, CAST(? AS TIMESTAMP),  CAST(? AS INTERVAL), ?)";
 		String res = DbHelper.executeUpdateJson(query, 
 				new DbHelper.ParamType[] {
 						DbHelper.ParamType.STRING,
