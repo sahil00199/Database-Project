@@ -175,7 +175,7 @@ create table checked(
 	foreign key(taID, secID) references taSection
 		on delete set null,
 	foreign key(qzID, qID) references quizQuestion
-		on delete set null,
+		on delete cascade,
 	primary key(taID, secID, qID, qzID)
 );
 
