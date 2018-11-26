@@ -43,6 +43,7 @@ $(document).ready(function() {
 //	document.title = "Course:"
 	c= currTime();
     document.getElementById("content").innerHTML =
+    	"<div id = \"coursetotal\"></div><br>"+
             "<div id = \"contentListpr\"></div><br>"+
             "<div id = \"contentListp\"></div><br>"+
             "<div id = \"contentListf\"></div><br>";
@@ -110,6 +111,27 @@ $(document).ready(function() {
         	}
         }
     });
+    
+    $.ajax({
+        type: "GET",
+        url: "StudentCourseMarks",
+        data: {"secid": secid},
+        success: function(data){
+//        	console.log(data);
+        	var data1 = (jQuery.parseJSON(data));
+        	console.log(data1);
+        	if(data1.status){
+	            coursetotal(
+	                data1.data,
+	                $('#coursetotal')
+	            );
+        	}
+        	else{
+        		window.location.replace("illegalAccess.html");
+        		console.log(data1.message);
+        	}
+        }
+    });
 });
 
 function currTime()
@@ -124,4 +146,17 @@ function currTime()
 	s = date + ' '+time
 	console.log(s)
 	return s
+}
+
+function coursetotal(result, list)
+{
+    // Remove current options
+    list.html('');
+    if(result != ''){
+    	var str = 'Total marks in all checked questions, including weightage :';
+		$.each(result, function(k, v) {
+			str+= v.s + "<br>";
+        });
+		list.html(str);
+    }
 }

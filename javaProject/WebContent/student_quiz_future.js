@@ -7,8 +7,28 @@ $(document).ready(function() {
 //	document.title = "Course:"
 //	currTime()
     document.getElementById("heading").innerHTML =  "Quiz schedule. Please note down the timings and be ready";
-    document.getElementById("content").innerHTML  = "<p id = \"schedule\"></p><br>";
+    document.getElementById("content").innerHTML  = "<div id = \"weightage\"></div><br>"+"<p id = \"schedule\"></p><br>";
     schedule();
+    
+    $.ajax({
+        type: "GET",
+        url: "QuizWeightage",
+        data: {"qzid": qzid},
+        success: function(data){
+//        	console.log(data);
+        	var data1 = (jQuery.parseJSON(data));
+        	if(data1.status){
+	            weightage(
+	                data1.data,
+	                $('#weightage')
+	            );
+        	}
+        	else{
+        		window.location.replace("illegalAccess.html");
+        		console.log(data1.message);
+        	}
+        }
+    });
 });
 
 
@@ -49,5 +69,18 @@ function scheduler(result, list, qzid)
 		
 			
         });
+    }
+}
+
+function weightage(result, list)
+{
+    // Remove current options
+    list.html('');
+    if(result != ''){
+    	var str = 'Weighatge:';
+		$.each(result, function(k, v) {
+			str+= v.weightage + "%<br>";
+        });
+		list.html(str);
     }
 }
