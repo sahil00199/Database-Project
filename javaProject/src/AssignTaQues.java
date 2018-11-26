@@ -58,7 +58,7 @@ public class AssignTaQues extends HttpServlet {
 			out.print(toout);
 			return;
 		}
-		console.log(secid);
+		System.out.println(secid);
 		String query1 =  //TODO: verify query
 				"insert into checked values (?, ?, ?, ?, FALSE);";
 		String res1 = DbHelper.executeQueryJson(query1, 
