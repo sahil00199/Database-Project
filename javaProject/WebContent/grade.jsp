@@ -4,13 +4,14 @@
     <link rel="stylesheet" href="jquery.dataTables.min.css"/>	 
 	<script src="jquery-3.3.1.js"> </script><!-- Latest compiled and minified CSS -->
 	<script>var qzid = <%= request.getParameter("qzid") %>; </script>
-    <script src="ta_quiz.js"></script>
+	<script>var qid = <%= request.getParameter("qid") %>; </script>
+    <script src="grade.js"></script>
     <script src="jquery.dataTables.min.js"></script>    
     <script src="jquery-ui.min.js"></script>   
     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Quiz</title>
+    <title>Grade Question</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -91,7 +92,7 @@
                     <div class="col-sm-12">
                         <div class="main_contact sections">
                             <div class="head_title text-center">
-                                <h1 id="heading">Quiz</h1>
+                                <h1 id="heading">Grade Question</h1>
                             </div>
 
                             <br><br>

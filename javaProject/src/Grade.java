@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class TAQuiz
+ * Servlet implementation class Grade
  */
-@WebServlet("/TAQuiz")
-public class TAQuiz extends HttpServlet {
+@WebServlet("/Grade")
+public class Grade extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TAQuiz() {
+    public Grade() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,13 +38,14 @@ public class TAQuiz extends HttpServlet {
 		String id = (String) session.getAttribute("id");
 		String role = (String) session.getAttribute("role");
 		String qzid= (String) request.getParameter("qzid");
-		if(!role.equals("TA")) {
+		String qid= (String) request.getParameter("qid");
+		if(!role.equals("TA") && !role.equals("instructor")) {
 			response.sendRedirect("illegalAccess.html");
 		}
-		if(qzid == null) {
+		if(qzid == null || qid == null) {
 			response.sendRedirect("illegalAccess.html");
 		}
-		RequestDispatcher view = request.getRequestDispatcher("ta_quiz.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("grade.jsp");
         view.forward(request, response);  
 	
 	}

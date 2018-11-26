@@ -289,7 +289,7 @@ function updateschedule(qzid)
         }
     }); 
 	document.location.reload() 
-	}
+}
 
 
 
