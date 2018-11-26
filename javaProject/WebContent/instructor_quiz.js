@@ -148,6 +148,19 @@ function MaxMarks(result, list)
 		list.html(str);
     }
 }
+
+function weightage(result, list)
+{
+    // Remove current options
+    list.html('');
+    if(result != ''){
+    	var str = 'Weighatge:';
+		$.each(result, function(k, v) {
+			str+= v.weightage + "%<br>";
+        });
+		list.html(str);
+    }
+}
 $(document).ready(function() {
 //	document.title = "Course:"
 	currTime()
@@ -155,10 +168,29 @@ $(document).ready(function() {
     document.getElementById("content").innerHTML =
         "<p id = \"schedule\"></p>"+
         "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AllSubmissions?qzid="+ qzid +"';\" >View all submissions</button><br><br>" +
-        "<div id = \"questions\"></div><br>"+
+        "<div id = \"weightage\"></div><br>"+"<div id = \"questions\"></div><br>"+
         "<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='AddQuizQuestion?qzid=" + qzid + "';\" >Add another Question</button>";
     schedule();
     questions();
+    $.ajax({
+        type: "GET",
+        url: "QuizWeightage",
+        data: {"qzid": qzid},
+        success: function(data){
+//        	console.log(data);
+        	var data1 = (jQuery.parseJSON(data));
+        	if(data1.status){
+	            weightage(
+	                data1.data,
+	                $('#weightage')
+	            );
+        	}
+        	else{
+        		window.location.replace("illegalAccess.html");
+        		console.log(data1.message);
+        	}
+        }
+    });
 });
 
 function schedule(){

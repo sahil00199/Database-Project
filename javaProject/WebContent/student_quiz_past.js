@@ -150,7 +150,7 @@ function questionList(result, list, qzid)
 $(document).ready(function() {
 //	document.title = "Course:"
     document.getElementById("content").innerHTML =
-    	"<div id = \"max\"></div><br>"+
+    	"<div id = \"max\"></div><br>"+"<div id = \"weightage\"></div><br>"+
     	"<div id = \"marksObtained\"></div><br>"+
             "<div id = \"questions\"></div><br>";
     document.getElementById("heading").innerHTML =  "Quiz";
@@ -218,6 +218,26 @@ $(document).ready(function() {
         	}
         }
     }); 
+    
+    $.ajax({
+        type: "GET",
+        url: "QuizWeightage",
+        data: {"qzid": qzid},
+        success: function(data){
+//        	console.log(data);
+        	var data1 = (jQuery.parseJSON(data));
+        	if(data1.status){
+	            weightage(
+	                data1.data,
+	                $('#weightage')
+	            );
+        	}
+        	else{
+        		window.location.replace("illegalAccess.html");
+        		console.log(data1.message);
+        	}
+        }
+    });
    
 });
 
@@ -350,5 +370,19 @@ function quizmarksObtained(result,list)
 	str +='Kindly refer to each question for details';
 	list.html(str);
 	}
+
+
+function weightage(result, list)
+{
+    // Remove current options
+    list.html('');
+    if(result != ''){
+    	var str = 'Weighatge:';
+		$.each(result, function(k, v) {
+			str+= v.weightage + "%<br>";
+        });
+		list.html(str);
+    }
+}
 
 
