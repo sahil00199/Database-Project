@@ -37,12 +37,18 @@ public class StudentSection extends HttpServlet {
 		String id = (String) session.getAttribute("id");
 		String role = (String) session.getAttribute("role");
 		String secid = (String) request.getParameter("secid");
+		System.out.println(role);
+		System.out.println(secid);;
+
 		if(!role.equals("student")) {
+			System.out.println("hello2");
 			response.sendRedirect("illegalAccess.html");
 		}
 		if(secid == null) {
+			System.out.println("hello1");
 			response.sendRedirect("illegalAccess.html");
 		}
+		System.out.println("hello");
 //		String html = "<html><head><title>Section</title>" + 
 //				"    <script src=\"jquery-3.3.1.js\"> </script>" + 
 //				"    <script src=\"jquery.dataTables.min.js\"></script>" + 
@@ -62,7 +68,7 @@ public class StudentSection extends HttpServlet {
 //				+ "</html>" ;
 //		response.setContentType("text/html");
 //		response.getWriter().print(html);
-		RequestDispatcher view = request.getRequestDispatcher("/studentSection.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("studentSection.jsp");
         view.forward(request, response);
 	
 	}

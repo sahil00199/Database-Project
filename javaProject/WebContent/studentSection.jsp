@@ -87,7 +87,7 @@
         </header> <!--End of header -->
 <!--     <div class='preloader'><div class='loaded'>&nbsp;</div></div>
  -->    
-    <p id="error" style="color:red"></p>
+    
 
 
         <!-- Contact Section -->
@@ -99,7 +99,7 @@
                             <div class="head_title text-center">
                                 <h1 id="heading" >Instructor Section</h1>
                             </div>
-
+							<p id="error" style="color:red"></p>
                             <div id="content"> </div>
                             
 

@@ -1,12 +1,12 @@
 
 function buildList(result, list)
 {
-    console.log("Came into build list");
+    console.log("Came into build list1");
     // Remove current options
     list.html('');
     if(result != ''){
     	$.each(result, function(k, v) {
-//        		console.log(v);
+        	console.log(v);
             list.append("<h3> <a href = \"InstructorSection?secid=" + v.secid + "\"> " +
             		v.courseid + " : " + v.coursename + ", " + v.semester +  ", " + v.year + 
             		"</a></h3>");
@@ -18,12 +18,14 @@ function goBack(){
 }
 $(document).ready(function() {
     document.getElementById("content").innerHTML =
-    	"<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='InstructorDB';\">  View Question Database </button><br><br>" +
+    	"<button type=\"button\" class=\"btn-primary\" onclick=\"location.href='InstructorDB';\">View Question Database</button><br><br>" +
         "<h4>Your Sections :</h4>"+
         "<div id = \"contentList\"> </div><br>"+
         "<button type=\"button\" class=\"btn-primary\" onclick=\"displayCreateSection()\">Create Section</button><br>"+
         "<div id=\"form1\"></div>";
     loadSections();
+    showCreateSection();
+    document.getElementById("form1").style.display = "none";
     $("#course").autocomplete({
         source : function(request,response){
             var xhttp;
@@ -41,7 +43,6 @@ $(document).ready(function() {
 });
 
 function loadSections(){
-    console.log("came into loadSections");
 	$('#contentList').html('');
 	$.ajax({
         type: "GET",
@@ -62,26 +63,26 @@ function loadSections(){
     }); 
 }
 
-$(document).ready(function() {
-    $("#linker").click(function(e)
-    {
-        e.preventDefault();
-        showCreateSection();
-    }  );
-});
-
+function displayCreateSection() {
+    var x = document.getElementById("form1");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+} 
 
 function showCreateSection()
 {
-    var currentHTML =     "<form id=\"newconversation\" onsubmit=\"createNewSection(this.course.value, this.year.value, this.semester.value)\">" +
+    var currentHTML =
+    "<br><form id=\"newconversation\" onsubmit=\"createNewSection(this.course.value, this.year.value, this.semester.value)\">" +
     " Courseid: <input type=\"text\" id = \"course\" name=\"courseid\" >"+
     " Year: <input type=\"text\" id = \"year\" name=\"year\">"+
     " Semester: <input type=\"text\" id = \"semester\" name=\"semester\"><br><br>"+
     //"<input type=\"submit\""
-    "<input class=\"btn-primary\" name=\"submit\" type=\"submit\" " +
-    "value=\"Submit\" />"+
+    "<input class=\"btn-primary\" name=\"submit\" type=\"submit\" " + "value=\"Submit\" />"+
     "</form>";
-    document.getElementById("newConvo").innerHTML = currentHTML;
+    document.getElementById("form1").innerHTML = currentHTML;
     $("#course").autocomplete({
         source : function(request,response){
             var xhttp;

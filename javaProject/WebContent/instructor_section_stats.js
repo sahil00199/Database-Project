@@ -1,15 +1,16 @@
 
 function goBack(){ 
-	window.location.replace("StudentHome");
+	window.location.replace("InstructorHome");
 }
 
 
 $(document).ready(function() {
     document.getElementById("heading").innerHTML =
-        "Instructor Section Statistics";
+        "Section Statistics";
+    console.log(secid);
     $.ajax({
         type: "GET",
-        url: "GetInstructorSectionStats",
+        url: "GetInstructorSectionStats?secid=" + secid,
         
         success: function(data){
         	document.getElementById("content").innerHTML = data;

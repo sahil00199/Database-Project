@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="jquery.dataTables.min.css"/>	 
 	<script src="jquery-3.3.1.js"> </script><!-- Latest compiled and minified CSS -->
 	<script>var qzid = <%= request.getParameter("qzid") %>; </script>
-    <script src="ta_quiz.js"></script>
+    <script src="student_quiz_past.js"></script>
     <script src="jquery.dataTables.min.js"></script>    
     <script src="jquery-ui.min.js"></script>   
     
@@ -51,7 +51,7 @@
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                         </button> -->
-                                        <button type="button" onClick="location.href = 'TAHome'" class="btn">
+                                        <button type="button" onClick="window.location.replace('InstructorHome')" class="btn">
                                             Home
                                         </button>
                                         
@@ -81,7 +81,6 @@
         </header> <!--End of header -->
 <!--     <div class='preloader'><div class='loaded'>&nbsp;</div></div>
  -->    
-    <p id="error" style="color:red"></p>
 
 
         <!-- Contact Section -->
@@ -91,10 +90,9 @@
                     <div class="col-sm-12">
                         <div class="main_contact sections">
                             <div class="head_title text-center">
-                                <h1 id="heading">Quiz</h1>
+                                <h1 id="heading">Add Question</h1>
                             </div>
-
-                            <br><br>
+							<p id="errored" style="color:red"></p>
                             <div id="content">
                             </div> 
 
