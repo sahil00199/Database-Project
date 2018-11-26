@@ -82,7 +82,7 @@ function showCreateQuiz()
     " Duration: <input type=\"text\" id = \"dur\" name=\"dur\" placeholder=\"days HH:MM:SS\"><br>"+
     " Maximum Marks: <input type=\"text\" id = \"maxmarks\" name=\"maxmarks\"><br>"+
     " Weightage: <input type=\"text\" id = \"weightage\" name=\"weightage\"><br>" +
-    "<button type=\"button\" class=\"btn\" onclick=\"createNewQuiz()\">Submit</button>"+
+    "<button type=\"button\" class=\"btn-primary\" onclick=\"createNewQuiz()\">Submit</button>"+
 //    "value=\"Submit\" />"+
     "</form>";
     document.getElementById("newConvo").innerHTML = currentHTML;
@@ -93,7 +93,7 @@ function showTA()
     var currentHTML = "<form>" +
     "Enter the ID or the name of the TA: <input type=\"text\" id = \"taid\" name=\"taid\">"+
     "<input type=\"text\" id = \"tapid\" name=\"tapid\" hidden><br>"+
-    "<button type=\"button\" class=\"btn\" onclick=\"addTAQuiz()\">Submit</button>"+
+    "<button type=\"button\" class=\"btn-primary\" onclick=\"addTAQuiz()\">Submit</button>"+
 //    "value=\"Submit\" />"+
     "</form>";
     document.getElementById("tanewConvo").innerHTML = currentHTML;

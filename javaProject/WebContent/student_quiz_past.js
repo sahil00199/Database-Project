@@ -51,7 +51,6 @@ function optionList(result, qlist, ans, isObjective, qNum)
     		$.each(result, function(k, v) {
     			str+="<input type=\"checkbox\" disabled name=\"ops\" id ="+ qNum + "o"+ k +" onclick=\"selectOption("+qNum+","+k+")\">"+ v.opt + "<br>" ;
             });
-    		str+="<br>";
     		
 //    		str+="<form> <button type=\"button\" onclick=\"putResponse("+qNum+", "+ isObjective+ ")\" > Save answer</button> </form><br>";
 //    		str+="<div class='separator2'></div>"
@@ -78,9 +77,10 @@ function questionList(result, list, qzid)
 			var question = "<p>Q."+ k1.toString() + ": " + v.problem +"     [Marks:"+v.maxmarks.toString()+ "] </p>" +
 					" <p id = op" + v.qid + " > </p>";
 			list.append(question);
-			var answer = "<p id = ans" + v.qid + "> </p><br>"+ 
-			"<p id= cor"+v.qid+"> Correct answer is </p> " +
-			"<p id= mark"+v.qid+"> Correct answer is </p> ";
+			var answer = "<p id = ans" + v.qid + "> </p>"+ 
+			"<p id= cor"+v.qid+"> Correct answer : </p>" +
+			"<p id= mark"+v.qid+"> Correct answer : </p>"+
+			"<div class = 'separator2'></div><br>";
 			questions[k] = v.qid;
 			list.append(answer);
     		$.ajax({
@@ -152,7 +152,7 @@ $(document).ready(function() {
     document.getElementById("content").innerHTML =
     	"<div id = \"max\"></div><br>"+"<div id = \"weightage\"></div><br>"+
     	"<div id = \"marksObtained\"></div><br>"+
-            "<div id = \"questions\"></div><br>";
+        "<div id = \"questions\"></div>";
     document.getElementById("heading").innerHTML =  "Quiz";
     console.log("sdfsaf");
     console.log(qzid);
@@ -248,10 +248,9 @@ function MaxMarks(result, list)
     if(result != ''){
     	var str = 'Maximum marks:';
 		$.each(result, function(k, v) {
-			if(v.s != null)
-					{
+			if(v.s != null){
 				str+= v.s + "<br>";
-					}
+			}
 			else{
 				str+=  + "0<br>Please add a question";
 			}
@@ -321,7 +320,7 @@ function correctList(result, list)
 {
     // Remove current options
     if(result != ''){
-    	var str = '<b>Correct Answer is </b>';
+    	var str = '<b>Correct Answer : </b><br>';
 		$.each(result, function(k, v) {
 			str+= v.opt + "<br>";
         });
@@ -377,7 +376,7 @@ function weightage(result, list)
     // Remove current options
     list.html('');
     if(result != ''){
-    	var str = 'Weighatge:';
+    	var str = 'Weighatge: ';
 		$.each(result, function(k, v) {
 			str+= v.weightage + "%<br>";
         });
