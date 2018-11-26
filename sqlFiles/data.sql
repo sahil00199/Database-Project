@@ -97,7 +97,7 @@ insert into section(courseid, year, semester) values('CS218', 2018, 'Summer');
 insert into section(courseid, year, semester) values('CS218', 2018, 'Winter');
 
 insert into tasection values('t1', 1);
-insert into tasection values('t2', 2);
+insert into tasection values('t2', 1);
 insert into tasection values('t3', 3);
 insert into tasection values('t1', 2);
 insert into tasection values('t2', 3);
@@ -194,3 +194,11 @@ insert into questiontopic values(5, 5);
 insert into quizQuestion(qID, qzID, maxMarks) values(1, 1, 1);
 insert into quizQuestion(qID, qzID, maxMarks) values(2, 1, 1);
 insert into quizQuestion(qID, qzID, maxMarks) values(3, 1, 1);
+
+insert into response values ('s1', 1, 1, '0 2', FALSE, '0:05:06', FALSE, null);
+insert into response values ('s2', 1, 1, '3', FALSE, '0:05:06', FALSE, null);
+insert into response values ('s1', 2, 1, '2', FALSE, '0:05:06', FALSE, null);
+	
+insert into checked values('t1', 1, 1, 1, FALSE);
+insert into checked values('t1', 1, 2, 1, FALSE);
+insert into checked values('t2', 1, 1, 1, FALSE);
