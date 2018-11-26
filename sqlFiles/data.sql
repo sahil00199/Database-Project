@@ -407,9 +407,9 @@ insert into response values ('s7', 10, 2, '1 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s7', 20, 2, 'Hyper Tank Protocol', FALSE, '0:05:06', TRUE, -1);
 
 insert into response values ('s8', 18, 2, 'Used to reduce time map', FALSE, '0:05:06', TRUE, 2);
-insert into response values ('s8', 19, 2, 'I P', TRUE, '0:05:06', TRUE, 0);
+insert into response values ('s8', 19, 2, 'I P', FALSE, '0:05:06', TRUE, 0);
 insert into response values ('s8', 5, 2, '2 ', TRUE, '0:05:06', TRUE, -1);
-insert into response values ('s8', 10, 2, '0 1 2 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s8', 10, 2, '0 1 2 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s8', 20, 2, 'Hyper Text Protocol', FALSE, '0:05:06', TRUE, -1);
 
 insert into response values ('s9', 18, 2, 'Used for parallelising queries', FALSE, '0:05:06', TRUE, 2);
