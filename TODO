@@ -30,19 +30,15 @@ INSTRUCTOR:
 xx check session and role in every servlet
 xx create new course
 xx with every new section created, we need to find the threadid and then add to teaches
--- add drop down for semesters
--- in drop down for course, display the name as well
+xx add drop down for semesters
+xx in drop down for course, display the name as well
 xx course page on clicking on course
 xx add question
--- check login in AllSection
--- in InsertQuizQuestion check that the quiz and the question belong to the instructor who is adding to it
+xx check login in AllSection
+xx in InsertQuizQuestion check that the quiz and the question belong to the instructor who is adding to it
 -- if a new question is tried to add, a error message is returned but the question is added to the database
 
 
-
-
 change names of files
-schedule update error
-table of add question
 add topic
-add question to te datable proper redirection
+student can see solutions in pastquizzes page even if the quiz is ongoing
