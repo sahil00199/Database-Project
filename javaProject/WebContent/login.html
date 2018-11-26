@@ -73,7 +73,50 @@ function validateForm(){
 <!--     <div class='preloader'><div class='loaded'>&nbsp;</div></div>
  -->    
         <!-- Contact Section -->
-        <section id="contact" class="contactus margin-top-0">
+        <header id="main_menu" class="header navbar-fixed-top">            
+            <div class="main_menu_bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="nave_menu">
+                            <nav class="navbar navbar-default" id="navmenu">
+                                <div class="container-fluid">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <!-- <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" onClick=goBack()>
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                        <button type="button" onClick="window.location.replace('Home')" class="btn">
+                                            Home
+                                        </button>
+                                        
+                                    </div> -->
+
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+
+                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                        <ul class="nav navbar-nav navbar-left">
+                                            <button type="button" class="btn" align="right" onClick="window.location.replace('signup.html')">
+                                            	Sign Up
+                                        	</button>
+                                        
+                                        </ul>    
+                                    </div>
+
+                                    
+
+                                </div>
+                            </nav>
+                        </div>  
+                    </div>
+
+                </div>
+
+            </div>
+        </header> <!--End of header -->
+        <section id="contact" class="contactus margin-top-120">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -89,10 +132,10 @@ function validateForm(){
 		<!-- <input type="radio" name="role" value="student" checked> Student <br>
 		<input type="radio" name="role" value="instructor"> Instructor <br>
 		<input type="radio" name="role" value="TA"> Teaching assistant <br> <br> -->
-		<button type="button" onclick="validateForm()">Login</button>
+		<button type="button" onclick="validateForm()" class="btn">Login</button>
 	</form>
 	<br><br>
-	<a href = "signup.html"> Sign up</a>
+	<!-- <a href = "signup.html"> Sign up</a> -->
 
                     </div>
                 </div><!-- End of row -->
