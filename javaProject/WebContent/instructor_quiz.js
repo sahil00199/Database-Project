@@ -161,11 +161,11 @@ function scheduler(result, list, qzid)
     if(result != ''){
     	$.each(result, function(k, v) {
 //    		console.log(v);
-			var s = "Start time : " + v.start + "<br>" + "Duration : "+ v.duration + "<br><br>" ;
+			var s = "<b>Start time :</b> " + v.start + "<br>" + "<b>Duration :</b> "+ v.duration + "<br><br>" ;
 			list.append(s);
 			var updateSchedule = "<p id=\"max\"> </p>" +"<form> " +
-			 " Enter start time: <input type=\"text\" id = \"sttime\" name=\"sttime\" placeholder=\"YYYY-MM-DD HH:MM:SS\"><br>"+
-			 " Enter duration: <input type=\"text\" id = \"dur\" name=\"dur\" placeholder=\"days HH:MM:SS\"><br>"+
+			 " <b>Enter start time:</b> <input type=\"text\" id = \"sttime\" name=\"sttime\" placeholder=\"YYYY-MM-DD HH:MM:SS\"><br>"+
+			 " <b>Enter duration:</b> <input type=\"text\" id = \"dur\" name=\"dur\" placeholder=\"days HH:MM:SS\"><br>"+
 			 "<button type=\"button\" class=\"btn-primary\" onclick=\"updateschedule("+qzid+")\" > Update Schedule</button> </form>";
 			console.log(updateSchedule);
 			list.append(updateSchedule);
@@ -197,7 +197,7 @@ function MaxMarks(result, list)
     // Remove current options
     list.html('');
     if(result != ''){
-    	var str = 'Maximum marks:';
+    	var str = '<b>Maximum marks:</b>';
 		$.each(result, function(k, v) {
 			str+= v.s + "<br>";
         });
@@ -210,7 +210,7 @@ function weightage(result, list)
     // Remove current options
     list.html('');
     if(result != ''){
-    	var str = 'Weighatge:';
+    	var str = '<b>Weighatge:</b>';
 		$.each(result, function(k, v) {
 			var w = v.weightage*100;
 			str+= w + "%<br>";
@@ -310,10 +310,11 @@ function removeQuestion(qid)
 //	    	console.log(data);
 	    	var data1 = (jQuery.parseJSON(data));
 	    	if(data1.status){
-	            
+	            document.location.reload();
 	    	}
 	    	else{
-	    		window.location.replace("illegalAccess.html");
+	    		alert(data1.message);
+//	    		window.location.replace("illegalAccess.html");
 	    		console.log(data1.message);
 	    	}
 	    }

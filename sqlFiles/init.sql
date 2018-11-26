@@ -118,7 +118,7 @@ create table quizQuestion(
 	foreign key(qID) references question
 		on delete cascade,
 	foreign key(qzID) references quiz
-		on delete set null,
+		on delete cascade,
 	primary key(qzID, qID)
 );
 
@@ -128,7 +128,7 @@ create table questionTopic(
 	foreign key (qID) references question
 		on delete cascade,
 	foreign key (topicID) references topic
-		on delete set null,
+		on delete cascade,
 	primary key(qID, topicID)
 );
 
@@ -173,7 +173,7 @@ create table checked(
 	qzID integer,
 	isChecked bool,
 	foreign key(taID, secID) references taSection
-		on delete set null,
+		on delete cascade,
 	foreign key(qzID, qID) references quizQuestion
 		on delete cascade,
 	primary key(taID, secID, qID, qzID)

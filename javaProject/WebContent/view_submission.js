@@ -48,7 +48,7 @@ function getResponse(qNum, isObjective){
         			console.log(ans);
         			document.getElementById(""+qNum).innerHTML = ans;
         		}
-        		if(marks != 'null')
+        		if(marks != 'null' || marks < 0)
         			document.getElementById("marks"+qNum).value = marks;
         	}
         	else{
@@ -72,7 +72,7 @@ function optionList(result, qlist, ans, isObjective, qNum)
     		}
     		
     		$.each(result, function(k, v) {
-    			str+="<input type=\"checkbox\" name=\"ops\" id ="+ qNum + "o"+ k +" >"+ v.opt + "<br>" ;
+    			str+="<input type=\"checkbox\" disabled name=\"ops\" id ="+ qNum + "o"+ k +" >"+ v.opt + "<br>" ;
             });
 //    		str+="<form> <button type=\"button\" onclick=\"putResponse("+qNum+", "+ isObjective+ ")\" > Save answer</button> </form><br>";
     		qlist.html(str);

@@ -112,8 +112,8 @@ $(document).ready(function() {
     	"<div id = \"max\"></div><br>"+"<div id = \"weightage\"></div><br>"+
             "<div id = \"questions\"></div><br>";
     document.getElementById("heading").innerHTML =  "Quiz";
-    console.log("sdfsaf");
-    console.log(qzid);
+//    console.log("sdfsaf");
+//    console.log(qzid);
     $.ajax({
         type: "GET",
         url: "StudentQuizQuestions",
@@ -181,7 +181,7 @@ function MaxMarks(result, list)
     // Remove current options
     list.html('');
     if(result != ''){
-    	var str = 'Maximum marks:';
+    	var str = '<b>Maximum marks:</b>';
 		$.each(result, function(k, v) {
 			str+= v.s + "<br>";
         });
@@ -237,7 +237,7 @@ function weightage(result, list)
     // Remove current options
     list.html('');
     if(result != ''){
-    	var str = 'Weighatge:';
+    	var str = '<b>Weighatge:</b>';
 		$.each(result, function(k, v) {
 			var w = v.weightage*100;
 			str+= w + "%<br>";

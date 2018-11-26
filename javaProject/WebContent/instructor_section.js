@@ -71,7 +71,7 @@ $(document).ready(function() {
 });
 
 function showGrades(){
-	window.location.replace("InstructorSectionStats?secid="+secid);
+	location.href = "InstructorSectionStats?secid="+secid;
 }
 
 function showCreateQuiz()
@@ -80,7 +80,6 @@ function showCreateQuiz()
     " Name of Quiz: <input type=\"text\" id = \"qname\" name=\"qname\"><br>"+
     " Start time: <input type=\"text\" id = \"sttime\" name=\"sttime\" placeholder=\"YYYY-MM-DD HH:MM:SS\"><br>"+
     " Duration: <input type=\"text\" id = \"dur\" name=\"dur\" placeholder=\"days HH:MM:SS\"><br>"+
-    " Maximum Marks: <input type=\"text\" id = \"maxmarks\" name=\"maxmarks\"><br>"+
     " Weightage: <input type=\"text\" id = \"weightage\" name=\"weightage\"><br>" +
     "<button type=\"button\" class=\"btn-primary\" onclick=\"createNewQuiz()\">Submit</button>"+
 //    "value=\"Submit\" />"+
@@ -130,7 +129,6 @@ function createNewQuiz()
 //	console.log("here");
 	var starttime = document.getElementById('sttime').value;
 	var duration = document.getElementById('dur').value;
-	var maxmarks = document.getElementById('maxmarks').value;
 	var weightage = document.getElementById('weightage').value;
 	var qzname = document.getElementById('qname').value;
 	var xhttp;
@@ -147,7 +145,7 @@ function createNewQuiz()
 		    loadQs();
          }
     }
-    xhttp.open("GET", "CreateQuiz?coursen=" + qzname + "&secid="+ secid +"&starttime="+starttime+"&duration="+duration+"&maxmarks="+maxmarks+"&weightage="+weightage, true);
+    xhttp.open("GET", "CreateQuiz?coursen=" + qzname + "&secid="+ secid +"&starttime="+starttime+"&duration="+duration+"&weightage="+weightage, true);
     xhttp.send();
     loadQs();
 }
