@@ -94,40 +94,68 @@ public class GetStudentStats extends HttpServlet {
 				marksObtained.put(topicname, (float) marksObtained.get(topicname) + (float) responses.get(i).get(1));
 			}
 		}
+		theString += "<div class=\"limiter\">\n" + 
+				"		<div class=\"container-table100\">\n" + 
+				"			<div class=\"wrap-table100\">\n" + 
+				"				<div class=\"table100 ver1 m-b-110\">\n" + 
+				"					<div class=\"table100-head\">";
 		theString += "<table>\n";
 			theString += "<tr class=\"row100 head\">\n";
-				theString += "<th class=\"cell100 column1\"></th>\n";
+				theString += "<th class=\"cell100 column1\">Type</th>\n";
 				theString += "<th class=\"cell100 column2\">Total Marks</th>\n";
 				theString += "<th class=\"cell100 column3\">Marks Obtained</th>\n";
 			theString += "</tr>\n";
-			theString += "<tr>\n";
-				theString += "<td> Objective </td>\n";
-				theString += "<td>" + Float.toString(marksObj) + "</td>\n";
-				theString += "<td>" + Float.toString(correctObj) + "</td>\n";
+			theString += "</thead>\n" + 
+					"						</table>\n" + 
+					"					</div>";
+			theString += "<div class=\"table100-body js-pscroll\">\n" + 
+					"						<table>\n" + 
+					"							<tbody>";
+			theString += "<tr class=\"row100 body\">\n";
+				theString += "<td class=\"cell100 column1\"> Objective </td>\n";
+				theString += "<td class=\"cell100 column2\">" + Float.toString(marksObj) + "</td>\n";
+				theString += "<td class=\"cell100 column3\">" + Float.toString(correctObj) + "</td>\n";
 			theString += "</tr>\n";
-			theString += "<tr>\n";
-				theString += "<td> Subjective </td>\n";
-				theString += "<td>" + Float.toString(marksSub) + "</td>\n";
-				theString += "<td>" + Float.toString(correctSub) + "</td>\n";
+			theString += "<tr class=\"row100 body\">\n";
+				theString += "<td class=\"cell100 column1\"> Subjective </td>\n";
+				theString += "<td class=\"cell100 column2\">" + Float.toString(marksSub) + "</td>\n";
+				theString += "<td class=\"cell100 column3\">" + Float.toString(correctSub) + "</td>\n";
 			theString += "</tr>\n";
-		theString += "</table>\n<br><br><br>\n";
-		
+		theString += "</tbody>\n" + 
+				"						</table>\n" + 
+				"					</div>\n" + 
+				"				</div></div></div>";
+//################################################################################################
+		theString += "<div class=\"limiter\">\n" + 
+				"		<div class=\"container-table100\">\n" + 
+				"			<div class=\"wrap-table100\">\n" + 
+				"				<div class=\"table100 ver1 m-b-110\">\n" + 
+				"					<div class=\"table100-head\">";
 		theString += "<table>\n";
-		theString += "<tr>\n";
-			theString += "<th>Topic</th>\n";
-			theString += "<th>Total Marks</th>\n";
-			theString += "<th>Marks Obtained</th>\n";
-		theString += "</tr>\n";
-		for (int i = 0 ; i < topics.size() ; i ++)
-		{
-			theString += "<tr>\n";
-				theString += "<td> " + topics.get(i) + " </td>\n";
-				theString += "<td>" + maxMarks.get(topics.get(i)) + "</td>\n";
-				theString += "<td>" + marksObtained.get(topics.get(i)) + "</td>\n";
+			theString += "<tr class=\"row100 head\">\n";
+				theString += "<th class=\"cell100 column1\">Topic</th>\n";
+				theString += "<th class=\"cell100 column2\">Total Marks</th>\n";
+				theString += "<th class=\"cell100 column3\">Marks Obtained</th>\n";
 			theString += "</tr>\n";
-		}
-	theString += "</table>\n";
-		
+			theString += "</thead>\n" + 
+					"						</table>\n" + 
+					"					</div>";
+			theString += "<div class=\"table100-body js-pscroll\">\n" + 
+					"						<table>\n" + 
+					"							<tbody>";
+			for (int i = 0 ; i < topics.size() ; i ++)
+			{
+				theString += "<tr class=\"row100 body\">\n";
+				theString += "<td class=\"cell100 column1\">" + topics.get(i) + "</td>\n";
+				theString += "<td class=\"cell100 column2\">" + maxMarks.get(topics.get(i)) + "</td>\n";
+				theString += "<td class=\"cell100 column3\">" + marksObtained.get(topics.get(i)) + "</td>\n";
+				theString += "</tr>\n";
+			}
+		theString += "</tbody>\n" + 
+				"						</table>\n" + 
+				"					</div>\n" + 
+				"				</div></div></div>";
+//################################################################################################
 		
 		PrintWriter out =  response.getWriter();
 		out.print(theString);
