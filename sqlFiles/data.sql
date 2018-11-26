@@ -145,7 +145,7 @@ insert into takes values('s1', 4);
 
 insert into quiz(qzName, secID, start, duration,weightage) values('Quiz 1', 1, '2018-09-22 19:10:25', '1:00:00', 0.1);
 insert into quiz(qzName, secID, start, duration,weightage) values('Midsem', 1, '2018-10-22 09:00:00', '3:00:00',0.3);
-insert into quiz(qzName, secID, start, duration,weightage) values('Quiz 2', 1, '2018-11-27 09:00:00', '9:30:00', 0.1);
+insert into quiz(qzName, secID, start, duration,weightage) values('Quiz 2', 1, '2018-11-26 23:00:00', '12:30:00', 0.1);
 insert into quiz(qzName, secID, start, duration,weightage) values('Endsem', 1, '2018-12-22 09:00:00', '3:00:00',0.4);
 insert into quiz(qzName, secID, start, duration,weightage) values('Quiz 1', 2, '2018-09-22 19:10:25', '3 4:05:06', 0.25);
 insert into quiz(qzName, secID, start, duration,weightage) values('Quiz 2', 2, '2018-09-25 09:00:00', '0:30:00', 0.25);
@@ -302,126 +302,126 @@ insert into quizQuestion(qID, qzID, maxMarks) values(17, 4, 8);
 insert into quizQuestion(qID, qzID, maxMarks) values(11, 4, 8);
 insert into quizQuestion(qID, qzID, maxMarks) values(12, 4, 8);
 
-insert into response values ('s1', 1, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s1', 2, 1, '1 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s1', 1, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s1', 2, 1, '1 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s1', 3, 1, 'many sides', FALSE, '0:05:06', TRUE, 0);
-insert into response values ('s1', 4, 1, '0 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s1', 4, 1, '0 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s1', 6, 1, 'l^2 l is the side', FALSE, '0:05:06', TRUE, -1);
 
-insert into response values ('s2', 1, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s2', 2, 1, '1 2 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s2', 1, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s2', 2, 1, '1 2 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s2', 3, 1, 'infinitely many sides', FALSE, '0:05:06', TRUE, 1);
-insert into response values ('s2', 4, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s2', 4, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s2', 6, 1, '1000', FALSE, '0:05:06', TRUE, -1);
 
-insert into response values ('s3', 1, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s3', 2, 1, '1 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s3', 1, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s3', 2, 1, '1 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s3', 3, 1, 'many sides', FALSE, '0:05:06', TRUE, 0);
-insert into response values ('s3', 4, 1, '0 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s3', 4, 1, '0 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s3', 6, 1, 'l^2 l is the side', FALSE, '0:05:06', TRUE, -1);
 
-insert into response values ('s4', 1, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s4', 2, 1, '1 2 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s4', 1, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s4', 2, 1, '1 2 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s4', 3, 1, 'infinitely many sides', FALSE, '0:05:06', TRUE, 1);
-insert into response values ('s4', 4, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s4', 4, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s4', 6, 1, '1000', FALSE, '0:05:06', TRUE, -1);
 
-insert into response values ('s5', 1, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s5', 2, 1, '1 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s5', 1, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s5', 2, 1, '1 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s5', 3, 1, 'many sides', FALSE, '0:05:06', TRUE, 0);
-insert into response values ('s5', 4, 1, '0 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s5', 4, 1, '0 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s5', 6, 1, 'l^2 l is the side', FALSE, '0:05:06', TRUE, -1);
 
-insert into response values ('s6', 1, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s6', 2, 1, '1 2 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s6', 1, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s6', 2, 1, '1 2 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s6', 3, 1, 'infinitely many sides', FALSE, '0:05:06', TRUE, 1);
-insert into response values ('s6', 4, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s6', 4, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s6', 6, 1, '1000', FALSE, '0:05:06', TRUE, -1);
 
-insert into response values ('s7', 1, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s7', 2, 1, '1 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s7', 1, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s7', 2, 1, '1 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s7', 3, 1, 'many sides', FALSE, '0:05:06', TRUE, 0);
-insert into response values ('s7', 4, 1, '0 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s7', 4, 1, '0 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s7', 6, 1, 'l^2 l is the side', FALSE, '0:05:06', TRUE, -1);
 
-insert into response values ('s8', 1, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s8', 2, 1, '1 2 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s8', 1, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s8', 2, 1, '1 2 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s8', 3, 1, 'infinitely many sides', FALSE, '0:05:06', TRUE, 1);
-insert into response values ('s8', 4, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s8', 4, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s8', 6, 1, '1000', FALSE, '0:05:06', TRUE, -1);
 
-insert into response values ('s9', 1, 1, '3 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s9', 2, 1, '1 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s9', 1, 1, '3 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s9', 2, 1, '1 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s9', 3, 1, 'many sides', FALSE, '0:05:06', TRUE, 0);
-insert into response values ('s9', 4, 1, '0 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s9', 4, 1, '0 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s9', 6, 1, 'l^2 l is the side', FALSE, '0:05:06', TRUE, -1);
 
-insert into response values ('s10', 1, 1, '2 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s10', 2, 1, '1 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s10', 1, 1, '2 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s10', 2, 1, '1 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s10', 3, 1, 'many sides', FALSE, '0:05:06', TRUE, 0);
-insert into response values ('s10', 4, 1, '1 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s10', 4, 1, '1 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s10', 6, 1, 'l^2 l is the side', FALSE, '0:05:06', TRUE, -1);
 
 -- Midsem
 
 insert into response values ('s1', 18, 2, 'Used for parallelising queries', FALSE, '0:05:06', TRUE, 2);
 insert into response values ('s1', 19, 2, 'Internet Protocol(IP)', FALSE, '0:05:06', TRUE, 3);
-insert into response values ('s1', 5, 2, '2 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s1', 10, 2, '1 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s1', 5, 2, '2 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s1', 10, 2, '1 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s1', 20, 2, 'Hyper Tank Protocol', FALSE, '0:05:06', TRUE, -1);
 
 insert into response values ('s2', 18, 2, 'Used to reduce time map', FALSE, '0:05:06', TRUE, 2);
 insert into response values ('s2', 19, 2, 'I P', FALSE, '0:05:06', TRUE, 0);
-insert into response values ('s2', 5, 2, '2 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s2', 10, 2, '0 1 2 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s2', 5, 2, '2 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s2', 10, 2, '0 1 2 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s2', 20, 2, 'Hyper Text Protocol', FALSE, '0:05:06', TRUE, -1);
 
 insert into response values ('s3', 18, 2, 'Used for parallelising queries', FALSE, '0:05:06', TRUE, 2);
 insert into response values ('s3', 19, 2, 'Internet Protocol(IP)', FALSE, '0:05:06', TRUE, 3);
-insert into response values ('s3', 5, 2, '2 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s3', 10, 2, '1 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s3', 5, 2, '2 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s3', 10, 2, '1 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s3', 20, 2, 'Hyper Tank Protocol', FALSE, '0:05:06', TRUE, -1);
 
 insert into response values ('s4', 18, 2, 'Used to reduce time map', FALSE, '0:05:06', TRUE, 2);
 insert into response values ('s4', 19, 2, 'I P', FALSE, '0:05:06', TRUE, 0);
-insert into response values ('s4', 5, 2, '2 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s4', 10, 2, '0 1 2 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s4', 5, 2, '2 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s4', 10, 2, '0 1 2 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s4', 20, 2, 'Hyper Text Protocol', FALSE, '0:05:06', TRUE, -1);
 
 insert into response values ('s5', 18, 2, 'Used for parallelising queries', FALSE, '0:05:06', TRUE, 2);
 insert into response values ('s5', 19, 2, 'Internet Protocol(IP)', FALSE, '0:05:06', TRUE, 3);
-insert into response values ('s5', 5, 2, '2 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s5', 10, 2, '1 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s5', 5, 2, '2 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s5', 10, 2, '1 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s5', 20, 2, 'Hyper Tank Protocol', FALSE, '0:05:06', TRUE, -1);
 
 insert into response values ('s6', 18, 2, 'Used to reduce time map', FALSE, '0:05:06', TRUE, 2);
 insert into response values ('s6', 19, 2, 'I P', FALSE, '0:05:06', TRUE, 0);
-insert into response values ('s6', 5, 2, '2 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s6', 10, 2, '0 1 2 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s6', 5, 2, '2 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s6', 10, 2, '0 1 2 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s6', 20, 2, 'Hyper Text Protocol', FALSE, '0:05:06', TRUE, -1);
 
 insert into response values ('s7', 18, 2, 'Used for parallelising queries', FALSE, '0:05:06', TRUE, 2);
 insert into response values ('s7', 19, 2, 'Internet Protocol(IP)', FALSE, '0:05:06', TRUE, 3);
-insert into response values ('s7', 5, 2, '2 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s7', 10, 2, '1 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s7', 5, 2, '2 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s7', 10, 2, '1 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s7', 20, 2, 'Hyper Tank Protocol', FALSE, '0:05:06', TRUE, -1);
 
 insert into response values ('s8', 18, 2, 'Used to reduce time map', FALSE, '0:05:06', TRUE, 2);
-insert into response values ('s8', 19, 2, 'I P', FALSE, '0:05:06', TRUE, 0);
-insert into response values ('s8', 5, 2, '2 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s8', 19, 2, 'I P', TRUE, '0:05:06', TRUE, 0);
+insert into response values ('s8', 5, 2, '2 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s8', 10, 2, '0 1 2 3 ', FALSE, '0:05:06', TRUE, -1);
 insert into response values ('s8', 20, 2, 'Hyper Text Protocol', FALSE, '0:05:06', TRUE, -1);
 
 insert into response values ('s9', 18, 2, 'Used for parallelising queries', FALSE, '0:05:06', TRUE, 2);
 insert into response values ('s9', 19, 2, 'Internet Protocol(IP)', FALSE, '0:05:06', TRUE, 3);
-insert into response values ('s9', 5, 2, '2 ', FALSE, '0:05:06', TRUE, -1);
-insert into response values ('s9', 10, 2, '1 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s9', 5, 2, '2 ', TRUE, '0:05:06', TRUE, -1);
+insert into response values ('s9', 10, 2, '1 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s9', 20, 2, 'Hyper Tank Protocol', FALSE, '0:05:06', TRUE, -1);
 
 insert into response values ('s10', 19, 2, 'I P', FALSE, '0:05:06', TRUE, 0);
-insert into response values ('s10', 5, 2, '2 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s10', 5, 2, '2 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s10', 18, 2, 'Used to reduce time map', FALSE, '0:05:06', TRUE, 2);
-insert into response values ('s10', 10, 2, '0 1 2 3 ', FALSE, '0:05:06', TRUE, -1);
+insert into response values ('s10', 10, 2, '0 1 2 3 ', TRUE, '0:05:06', TRUE, -1);
 insert into response values ('s10', 20, 2, 'Hyper Text Protocol', FALSE, '0:05:06', TRUE, -1);
 	
 insert into checked values('t1', 1, 1, 1, FALSE);
