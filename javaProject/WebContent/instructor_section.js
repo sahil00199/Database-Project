@@ -82,8 +82,8 @@ function showTA()
 {
     var currentHTML = "<form>" +
     "Enter the ID or the name of the TA: <input type=\"text\" id = \"taid\" name=\"taid\">"+
-    "<input type=\"text\" id = \"tapid\" name=\"tapid\" hidden>"+
-    "<button type=\"button\" onclick=\"addTAQuiz()\">Submit</button>"+
+    "<input type=\"text\" id = \"tapid\" name=\"tapid\" hidden><br>"+
+    "<button type=\"button\" class=\"btn\" onclick=\"addTAQuiz()\">Submit</button>"+
 //    "value=\"Submit\" />"+
     "</form>";
     document.getElementById("tanewConvo").innerHTML = currentHTML;

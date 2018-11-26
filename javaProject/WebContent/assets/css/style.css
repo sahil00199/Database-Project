@@ -152,16 +152,16 @@ h5 {
     line-height: 2rem;
 }
 h1 {
-    font-size: 3.75rem;
+    font-size: 3rem;
     font-family: 'montserrathairline';
 }
 h2 {
-    font-size:3rem;
+    font-size:2 rem;
     line-height: 3rem;
     font-family: 'montserratbold';
 }
 h3 {
-    font-size:1.875rem;
+    font-size:1.5rem;
     line-height: 2.5rem;
     font-family: 'montserratlight';
 }
@@ -218,7 +218,7 @@ p:last-child {
 Section
 */
 .sections {
-    padding-top:85px;
+    padding-top:10px;
     padding-bottom: 105px;
     overflow: hidden;
 }
@@ -509,14 +509,14 @@ input::-ms-input-placeholder {
     margin-top: 0px;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
-    height: 155px;
+    height: 85px;
     transition: all 0.3s;
 }
 .main_menu_bg .navbar-default {
     background-color: transparent; 
     border-color: transparent; 
     transition: all .3s;
-    margin: 15px auto;
+    margin: 0px auto;
 }
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus{
     color:#000000;
@@ -532,8 +532,8 @@ input::-ms-input-placeholder {
 }
 
 .main_menu_bg .navbar-nav>li>a {
-    padding-top: 15px;
-    padding-bottom: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     font-size: 0.875rem;
     color: #333;
 }

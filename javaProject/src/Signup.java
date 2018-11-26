@@ -34,10 +34,10 @@ public class Signup extends HttpServlet {
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		String role = request.getParameter("role");
+//		String role = request.getParameter("role");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		if(role.equals("student")) {
+		if(true) {
 			String query = "insert into student values(?, ?, ?, ?)";
 			String json = DbHelper.executeUpdateJson(query, 
 					new DbHelper.ParamType[] {DbHelper.ParamType.STRING, 
@@ -47,8 +47,9 @@ public class Signup extends HttpServlet {
 					new Object[] {id, name, email, password});
 			
 			response.getWriter().print(json);
+			System.out.println(json);
 		}
-		else if(role.equals("instructor")) {
+		if(true) {
 			String query = "insert into instructor values(?, ?, ?, ?)";
 			String json = DbHelper.executeUpdateJson(query, 
 					new DbHelper.ParamType[] {DbHelper.ParamType.STRING, 
@@ -57,9 +58,10 @@ public class Signup extends HttpServlet {
 							DbHelper.ParamType.STRING}, 
 					new Object[] {id, name, email, password});
 			
-			response.getWriter().print(json);
+//			response.getWriter().print(json);
+			System.out.println(json);
 		}
-		else {
+		if (true) {
 			String query = "insert into TA values(?, ?, ?, ?)";
 			String json = DbHelper.executeUpdateJson(query, 
 					new DbHelper.ParamType[] {DbHelper.ParamType.STRING, 
@@ -68,9 +70,9 @@ public class Signup extends HttpServlet {
 							DbHelper.ParamType.STRING}, 
 					new Object[] {id, name, email, password});
 			
-			response.getWriter().print(json);
+//			response.getWriter().print(json);
+			System.out.println(json);
 		}
 		
 	}
-
 }
